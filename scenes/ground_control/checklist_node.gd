@@ -35,7 +35,7 @@ func move_down() -> void:
 	
 	onScreen = false
 
-var scroll_speed = 10
+var scroll_speed = 50
 
 
 func _sprite_top() -> float: #calculates the top of the sprite
