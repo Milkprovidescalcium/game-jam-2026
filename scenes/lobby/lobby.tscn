@@ -2,12 +2,24 @@
 
 [ext_resource type="Script" uid="uid://51nwua8s5mt7" path="res://scenes/lobby/lobby.gd" id="1_ll2xe"]
 
-[node name="Lobby" type="Node2D" unique_id=2084483371]
+[node name="Lobby" type="Control" unique_id=1798890035]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_ll2xe")
 
-[node name="HostButton" type="Node2D" parent="." unique_id=1895476125]
+[node name="StatusLabel" type="Label" parent="." unique_id=157217636]
+layout_mode = 1
+offset_left = 258.0
+offset_top = 355.0
+offset_right = 504.0
+offset_bottom = 426.0
+theme_override_font_sizes/font_size = 24
+text = "
+"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="HostButton" unique_id=1154058873]
+[node name="HostButton" type="Button" parent="." unique_id=1154058873]
+layout_mode = 0
 offset_left = 402.0
 offset_top = 413.0
 offset_right = 736.0
@@ -15,9 +27,8 @@ offset_bottom = 509.0
 theme_override_font_sizes/font_size = 64
 text = "HOST"
 
-[node name="JoinButton" type="Node2D" parent="." unique_id=183942492]
-
-[node name="Button2" type="Button" parent="JoinButton" unique_id=1867683254]
+[node name="JoinButton" type="Button" parent="." unique_id=1867683254]
+layout_mode = 0
 offset_left = 392.0
 offset_top = 142.0
 offset_right = 726.0
@@ -26,31 +37,18 @@ theme_override_font_sizes/font_size = 64
 text = "Join
 "
 
-[node name="IPInput" type="Node2D" parent="." unique_id=1147558924]
-
-[node name="LineEdit" type="LineEdit" parent="IPInput" unique_id=1751765696]
+[node name="IPInput" type="LineEdit" parent="." unique_id=1751765696]
+layout_mode = 0
 offset_left = 349.0
 offset_top = 278.0
 offset_right = 783.0
 offset_bottom = 348.0
 
-[node name="OfflineButton" type="Node2D" parent="." unique_id=1788537267]
-
-[node name="Button5" type="Button" parent="OfflineButton" unique_id=328996038]
+[node name="OfflineButton" type="Button" parent="." unique_id=328996038]
+layout_mode = 0
 offset_left = 393.0
 offset_top = 17.0
 offset_right = 727.0
 offset_bottom = 113.0
 theme_override_font_sizes/font_size = 64
 text = "Offline"
-
-[node name="StatusLabel" type="Node2D" parent="." unique_id=144032172]
-
-[node name="Label" type="Label" parent="StatusLabel" unique_id=157217636]
-offset_left = -1.0
-offset_top = 5.0
-offset_right = 194.0
-offset_bottom = 93.0
-theme_override_font_sizes/font_size = 64
-text = "OF"
-horizontal_alignment = 1

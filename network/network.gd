@@ -9,13 +9,17 @@ signal server_closed
 
 const PORT := 7777
 const MAX_CLIENTS := 1  # just ground control
-
+const CONNECT_TIMEOUT := 5.0
+	
 var is_online := false
+var _connecting := false
 
 func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
-	multiplayer.connected_to_server.connect(func(): connected_ok.emit())
+	multiplayer.connected_to_server.connect(func():
+		_connecting = false
+		connected_ok.emit())
 	multiplayer.connection_failed.connect(_on_connection_failed)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
@@ -30,14 +34,25 @@ func host() -> Error:
 	return OK
 
 func join(ip: String) -> Error:
+	ip = ip.strip_edges()
+	if not ip.is_valid_ip_address():
+		push_warning("Not a valid IP: %s" % ip)
+		return ERR_INVALID_PARAMETER
 	var peer := ENetMultiplayerPeer.new()
 	var err := peer.create_client(ip, PORT)
 	if err != OK:
-		push_error("Could not join: %s" % error_string(err))
 		return err
 	multiplayer.multiplayer_peer = peer
 	is_online = true
+	_connecting = true
+	_start_timeout()
 	return OK
+	
+func _start_timeout() -> void:
+	await get_tree().create_timer(CONNECT_TIMEOUT).timeout
+	if _connecting:   # still not connected
+		_on_connection_failed()
+		
 
 func leave() -> void:
 	if multiplayer.multiplayer_peer:
@@ -61,9 +76,13 @@ func _on_peer_disconnected(id: int) -> void:
 	player_disconnected.emit(id)
 
 func _on_connection_failed() -> void:
-	leave()
+	if not _connecting:
+		return   # already handled
+	_connecting = false
+	leave.call_deferred()   # shut down after Godot finishes, not during
 	connection_failed.emit()
 
 func _on_server_disconnected() -> void:
 	leave()
 	server_closed.emit()
+	

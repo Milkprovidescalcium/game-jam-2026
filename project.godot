@@ -14,6 +14,11 @@ config/name="game_jam_2026"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Network="*uid://dtfsea6b1oj6b"
+ShipNet="*uid://dbtx8usny7byn"
+
 [display]
 
 window/stretch/mode="canvas_items"

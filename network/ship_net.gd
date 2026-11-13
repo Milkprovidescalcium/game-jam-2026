@@ -3,6 +3,7 @@ extends Node
 
 # Signals the UI listens to
 signal message_received(text: String)
+signal message_lost(text: String)
 signal room_status_changed(room_id: String, broken: bool)
 signal player_moved(room_id: String)
 signal puzzle_info(room_id: String, info: Dictionary)
@@ -17,13 +18,15 @@ var signal_lost := false              # true during orbit blackout
 
 func send_message(text: String) -> void:
 	if signal_lost:
+		message_lost.emit(text)
 		return  # lost in space
-	_deliver_message.rpc_id(1, text)
+	_deliver_message.rpc(text)
 
-@rpc("any_peer", "call_local", "reliable")
+@rpc("any_peer", "call_remote", "reliable")
 func _deliver_message(text: String) -> void:
+	var from_ship := multiplayer.get_remote_sender_id() == 1   # host = ship
 	await get_tree().create_timer(signal_delay).timeout
-	message_received.emit(text)
+	message_received.emit(text, from_ship)
 
 # ---------- Ship -> ground control ----------
 # Call these only on the host (the ship).
@@ -70,3 +73,4 @@ func end_game(won: bool) -> void:
 @rpc("authority", "call_local", "reliable")
 func _end(won: bool) -> void:
 	game_ended.emit(won)
+	
