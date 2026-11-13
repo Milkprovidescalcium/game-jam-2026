@@ -1,10 +1,5 @@
 [gd_scene format=3 uid="uid://brrh0rp25ab6q"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_uttwe"]
+[node name="Node2D" type="Node2D" unique_id=1592803402]
 
-[node name="Node2D" type="Node2D" unique_id=51930223]
-
-[node name="poop sprite" type="Sprite2D" parent="." unique_id=1144039399]
-position = Vector2(17.729996, 0)
-scale = Vector2(-16.729996, -0.21000671)
-texture = SubResource("ViewportTexture_uttwe")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2279248]
