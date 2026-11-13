@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://ba1kpg2smfr1f"]
+
+[ext_resource type="Script" uid="uid://nt080n7v3vw3" path="res://scenes/ship/body.gd" id="1_x0fp6"]
+[ext_resource type="Texture2D" uid="uid://nfwm36meqvwl" path="res://art/rooms/ArrowHover.png" id="2_tekn2"]
+[ext_resource type="Texture2D" uid="uid://8tyomlyafbtu" path="res://art/rooms/spaceBody.jpeg.webp" id="3_tekn2"]
+
+[node name="Body" type="Node2D" unique_id=672123077]
+script = ExtResource("1_x0fp6")
+
+[node name="GoToLeftWing" type="Sprite2D" parent="." unique_id=214635618]
+position = Vector2(105, 317)
+rotation = 6.2831855
+scale = Vector2(0.06611976, 0.06025007)
+texture = ExtResource("2_tekn2")
+
+[node name="GoToLeftWingButton" type="Button" parent="GoToLeftWing" unique_id=144707461]
+z_index = 99
+offset_left = -741.07947
+offset_top = -912.862
+offset_right = 859.0309
+offset_bottom = 802.19
+metadata/_edit_use_anchors_ = true
+
+[node name="GoToCockpit" type="Sprite2D" parent="." unique_id=1350351813]
+position = Vector2(568, 88)
+rotation = 1.5707964
+scale = Vector2(0.06611976, 0.06025007)
+texture = ExtResource("2_tekn2")
+
+[node name="GoToCockpitButton" type="Button" parent="GoToCockpit" unique_id=818099769]
+offset_left = -756.20374
+offset_top = -929.45935
+offset_right = 889.7728
+offset_bottom = 800.4669
+metadata/_edit_use_anchors_ = true
+
+[node name="GoToRightWing" type="Sprite2D" parent="." unique_id=2116165127]
+position = Vector2(1064, 330)
+rotation = 3.1415927
+scale = Vector2(0.06611976, 0.06025007)
+texture = ExtResource("2_tekn2")
+
+[node name="GoToRightWing" type="Button" parent="GoToRightWing" unique_id=1376411198]
+offset_left = -741.0794
+offset_top = -969.2862
+offset_right = 798.1379
+offset_bottom = 866.02435
+metadata/_edit_use_anchors_ = true
+
+[node name="GoToLowerEngine" type="Sprite2D" parent="." unique_id=1452140750]
+position = Vector2(571, 562.745)
+rotation = 4.712389
+scale = Vector2(0.06611976, 0.06025007)
+texture = ExtResource("2_tekn2")
+
+[node name="GoToLowerEngineButton" type="Button" parent="GoToLowerEngine" unique_id=61961031]
+offset_left = -778.6161
+offset_top = -927.4602
+offset_right = 867.8917
+offset_bottom = 846.6765
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=217574918]
+z_index = -999
+position = Vector2(576.00006, 322.00003)
+scale = Vector2(0.6020833, 0.60925925)
+texture = ExtResource("3_tekn2")
+
+[connection signal="pressed" from="GoToLeftWing/GoToLeftWingButton" to="." method="_on_go_to_left_wing_button_pressed"]
+[connection signal="pressed" from="GoToCockpit/GoToCockpitButton" to="." method="_on_go_to_cockpit_button_pressed"]
+[connection signal="pressed" from="GoToRightWing/GoToRightWing" to="." method="_on_go_to_right_wing_pressed"]
+[connection signal="pressed" from="GoToLowerEngine/GoToLowerEngineButton" to="." method="_on_go_to_lower_engine_button_pressed"]

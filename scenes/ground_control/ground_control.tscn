@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://cnkp1d1wsq1ya"]
+
+[ext_resource type="Script" uid="uid://dstmvuc8nfgdb" path="res://scenes/ground_control/ground_control.gd" id="1_sri32"]
+[ext_resource type="Script" uid="uid://dctssf1qfeu3s" path="res://scenes/ground_control/background.gd" id="2_fa1fp"]
+[ext_resource type="Texture2D" uid="uid://b8a5yrxplyp2k" path="res://art/rooms/ground_control.jpg" id="2_xihjd"]
+[ext_resource type="Texture2D" uid="uid://bkwhyxgasqn8" path="res://art/rooms/placeholder.jpeg" id="3_05fu4"]
+[ext_resource type="Script" uid="uid://ctvnbdatwtis4" path="res://scenes/ground_control/instructions_node.gd" id="3_sri32"]
+[ext_resource type="Script" uid="uid://ctl0lw23yfo4v" path="res://scenes/ground_control/papers_node.gd" id="4_ix2pd"]
+[ext_resource type="Texture2D" uid="uid://7m7igas4to5t" path="res://themes/icon.svg" id="5_pnsip"]
+[ext_resource type="Texture2D" uid="uid://cwl55g8086cqy" path="res://icon.svg" id="6_0nja8"]
+[ext_resource type="Texture2D" uid="uid://bu6u7wm176c7t" path="res://art/rooms/placeholder3.jpeg" id="8_8iurw"]
+[ext_resource type="Script" uid="uid://c2mvncn7x02px" path="res://scenes/ground_control/checklist_node.gd" id="8_xihjd"]
+[ext_resource type="Texture2D" uid="uid://bvx0ccyq3iray" path="res://art/rooms/Checklist.jpg" id="9_3tlgs"]
+[ext_resource type="Texture2D" uid="uid://bfjvjif1547ei" path="res://art/rooms/Temperature Guide.jpg" id="11_vnx1y"]
+
+[node name="GroundControl" type="Node2D" unique_id=1148467507]
+position = Vector2(-1, -2)
+script = ExtResource("1_sri32")
+
+[node name="background" type="Sprite2D" parent="." unique_id=660413358]
+position = Vector2(181.5587, 811.9831)
+scale = Vector2(0.3282522, 0.24001253)
+texture = ExtResource("2_xihjd")
+script = ExtResource("2_fa1fp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1394623238]
+position = Vector2(184, 812)
+
+[node name="InstructionsNode" type="Node2D" parent="." unique_id=89858719]
+z_index = 1
+script = ExtResource("3_sri32")
+
+[node name="ThermalButton" type="Button" parent="InstructionsNode" unique_id=1673040130]
+offset_left = -91.0
+offset_top = 736.0
+offset_right = 50.0
+offset_bottom = 906.0
+
+[node name="RadiationButton" type="Button" parent="InstructionsNode" unique_id=831128833]
+offset_left = -84.0
+offset_top = 584.0
+offset_right = 62.0
+offset_bottom = 719.0
+
+[node name="TopOfCamSprite" type="Sprite2D" parent="InstructionsNode" unique_id=1044182255]
+visible = false
+position = Vector2(2100, 463)
+scale = Vector2(87.15973, 1)
+texture = ExtResource("5_pnsip")
+
+[node name="Instructions" type="Sprite2D" parent="InstructionsNode" unique_id=341223333]
+position = Vector2(190, 3800)
+scale = Vector2(1.3854661, 1.7404463)
+texture = ExtResource("3_05fu4")
+
+[node name="BottomOfCamSprite" type="Sprite2D" parent="InstructionsNode" unique_id=641095661]
+visible = false
+position = Vector2(177, 1071)
+scale = Vector2(9.3359375, 1)
+texture = ExtResource("6_0nja8")
+
+[node name="OxygenButton" type="Button" parent="InstructionsNode" unique_id=1253265919]
+z_index = -1
+offset_left = -269.0
+offset_top = 734.0
+offset_right = -139.0
+offset_bottom = 914.0
+
+[node name="TableNode" type="Node2D" parent="." unique_id=1693905726]
+
+[node name="ScreenNode" type="Node2D" parent="TableNode" unique_id=835402527]
+
+[node name="Placeholder3" type="Sprite2D" parent="TableNode/ScreenNode" unique_id=99456000]
+position = Vector2(1117, 1523)
+scale = Vector2(0.52012575, 0.87483007)
+texture = ExtResource("3_05fu4")
+
+[node name="ChecklistNode" type="Node2D" parent="TableNode" unique_id=1855244588]
+script = ExtResource("8_xihjd")
+
+[node name="BottomOfCampForCheckListSprite" type="Sprite2D" parent="TableNode/ChecklistNode" unique_id=1944744991]
+visible = false
+position = Vector2(179, 1076)
+scale = Vector2(9.3359375, 1)
+texture = ExtResource("6_0nja8")
+
+[node name="CheckList" type="Sprite2D" parent="TableNode/ChecklistNode" unique_id=1797006197]
+z_index = 3
+position = Vector2(195.01901, 3799.9802)
+scale = Vector2(0.37554148, 0.36286834)
+texture = ExtResource("9_3tlgs")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TableNode/ChecklistNode/CheckList" unique_id=1822970924]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TableNode/ChecklistNode/CheckList/ScrollContainer" unique_id=1256807716]
+layout_mode = 2
+
+[node name="CheckListBackground" type="Sprite2D" parent="TableNode/ChecklistNode" unique_id=602769948]
+position = Vector2(1210, 1013)
+scale = Vector2(0.5250085, 0.87483007)
+texture = ExtResource("3_05fu4")
+
+[node name="CheckListSprite" type="Sprite2D" parent="TableNode/ChecklistNode" unique_id=1570759134]
+position = Vector2(695, 1438)
+scale = Vector2(0.4110054, 0.40624994)
+texture = ExtResource("8_8iurw")
+
+[node name="CheckListButton" type="Button" parent="TableNode/ChecklistNode/CheckListSprite" unique_id=971780861]
+offset_left = -1338.1819
+offset_top = -1649.2311
+offset_right = -909.9637
+offset_bottom = -1257.8464
+
+[node name="TopOfCamForCheckListSprite" type="Sprite2D" parent="TableNode/ChecklistNode" unique_id=783338643]
+visible = false
+position = Vector2(1995, 468)
+scale = Vector2(87.15973, 1)
+texture = ExtResource("5_pnsip")
+
+[node name="PapersNode" type="Node2D" parent="TableNode" unique_id=1502773762]
+script = ExtResource("4_ix2pd")
+
+[node name="PapersSprite" type="Sprite2D" parent="TableNode/PapersNode" unique_id=2062771940]
+position = Vector2(1595, 866)
+scale = Vector2(0.52012575, 0.87483007)
+texture = ExtResource("3_05fu4")
+
+[node name="PapersButton" type="Button" parent="TableNode/PapersNode/PapersSprite" unique_id=1159538744]
+offset_left = -3581.8264
+offset_top = -323.4914
+offset_right = -3304.97
+offset_bottom = -169.17566
+
+[node name="OxygenSprite" type="Sprite2D" parent="TableNode/PapersNode" unique_id=711996357]
+z_index = 999
+position = Vector2(193.33464, 3800)
+scale = Vector2(0.37752983, 0.36423892)
+texture = ExtResource("11_vnx1y")
+
+[connection signal="pressed" from="InstructionsNode/ThermalButton" to="InstructionsNode" method="_on_thermal_button_pressed"]
+[connection signal="pressed" from="InstructionsNode/RadiationButton" to="InstructionsNode" method="_on_radiation_button_pressed"]
+[connection signal="pressed" from="InstructionsNode/OxygenButton" to="InstructionsNode" method="_on_oxygen_button_pressed"]
+[connection signal="pressed" from="TableNode/ChecklistNode/CheckListSprite/CheckListButton" to="." method="_on_check_list_button_pressed"]
+[connection signal="pressed" from="TableNode/ChecklistNode/CheckListSprite/CheckListButton" to="TableNode/ChecklistNode" method="_on_check_list_button_pressed"]
+[connection signal="pressed" from="TableNode/PapersNode/PapersSprite/PapersButton" to="InstructionsNode" method="_on_button_pressed"]
+[connection signal="pressed" from="TableNode/PapersNode/PapersSprite/PapersButton" to="TableNode/PapersNode" method="_on_button_pressed"]

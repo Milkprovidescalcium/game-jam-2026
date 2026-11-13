@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d2bi1clntb8n3"]
+
+[ext_resource type="Script" uid="uid://uhpq54l83th1" path="res://scenes/ship/lower_engine.gd" id="1_6df0e"]
+[ext_resource type="Texture2D" uid="uid://nfwm36meqvwl" path="res://art/rooms/ArrowHover.png" id="2_6df0e"]
+[ext_resource type="Texture2D" uid="uid://cy27eur556r46" path="res://art/rooms/EngineRoom.jpeg" id="3_dr8xw"]
+
+[node name="LowerEngine" type="Node2D" unique_id=1373055352]
+script = ExtResource("1_6df0e")
+
+[node name="GoToBody" type="Sprite2D" parent="." unique_id=1872190126]
+position = Vector2(568, 88)
+rotation = 1.5707964
+scale = Vector2(0.06611976, 0.06025007)
+texture = ExtResource("2_6df0e")
+
+[node name="GoToBody" type="Button" parent="GoToBody" unique_id=332170380]
+offset_left = -680.58356
+offset_top = -979.2498
+offset_right = 918.4311
+offset_bottom = 706.6259
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=680393440]
+z_index = -1
+position = Vector2(582.75, 324.25)
+scale = Vector2(1.6378341, 1.4976798)
+texture = ExtResource("3_dr8xw")
+
+[connection signal="pressed" from="GoToBody/GoToBody" to="." method="_on_go_to_body_pressed"]

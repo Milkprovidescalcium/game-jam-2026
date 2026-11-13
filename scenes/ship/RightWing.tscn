@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bcry0pemgqgv4"]
+
+[ext_resource type="Script" uid="uid://b3pi8gypd8qkw" path="res://scenes/ship/right_wing.gd" id="1_78mw5"]
+[ext_resource type="Texture2D" uid="uid://nfwm36meqvwl" path="res://art/rooms/ArrowHover.png" id="2_y44vr"]
+[ext_resource type="Texture2D" uid="uid://cfqytae3if7wc" path="res://art/rooms/RightShell.jpg" id="3_y44vr"]
+
+[node name="RightWing" type="Node2D" unique_id=162361078]
+script = ExtResource("1_78mw5")
+
+[node name="GoToBody" type="Sprite2D" parent="." unique_id=1676714439]
+position = Vector2(105, 317)
+rotation = 6.2831855
+scale = Vector2(0.06611976, 0.06025007)
+texture = ExtResource("2_y44vr")
+
+[node name="GoToBody" type="Button" parent="GoToBody" unique_id=1803751931]
+offset_left = -801.57605
+offset_top = -863.0695
+offset_right = 797.4386
+offset_bottom = 822.80646
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=958983011]
+z_index = -1
+position = Vector2(578, 326.5)
+scale = Vector2(1.3761904, 1.0370967)
+texture = ExtResource("3_y44vr")
+
+[connection signal="pressed" from="GoToBody/GoToBody" to="." method="_on_go_to_body_pressed"]

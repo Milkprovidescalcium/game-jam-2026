@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://00vju2p642fa"]
+
+[ext_resource type="Script" uid="uid://cgct0xl6dy4ry" path="res://scenes/ship/cockpit.gd" id="1_fig7l"]
+[ext_resource type="Texture2D" uid="uid://nfwm36meqvwl" path="res://art/rooms/ArrowHover.png" id="2_xomhx"]
+[ext_resource type="Texture2D" uid="uid://c8lbmmd0d1w88" path="res://art/rooms/cockpit.jpg" id="3_xomhx"]
+
+[node name="Cockpit" type="Node2D" unique_id=2117844934]
+script = ExtResource("1_fig7l")
+
+[node name="GoToBody" type="Sprite2D" parent="." unique_id=504259316]
+position = Vector2(571, 562.745)
+rotation = 4.712389
+scale = Vector2(0.06611976, 0.06025007)
+texture = ExtResource("2_xomhx")
+
+[node name="GoToBody" type="Button" parent="GoToBody" unique_id=1271631219]
+offset_left = -771.32666
+offset_top = -879.66675
+offset_right = 827.688
+offset_bottom = 806.2092
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=348591618]
+z_index = -1
+position = Vector2(578.37494, 328.25003)
+scale = Vector2(0.24276045, 0.24499997)
+texture = ExtResource("3_xomhx")
+
+[connection signal="pressed" from="GoToBody/GoToBody" to="." method="_on_go_to_body_pressed"]
