@@ -16,7 +16,18 @@ func _ready() -> void:
 	sprite.position.x = ORIGINX
 	sprite.position.y = ORIGINY
 	
+	add_child(audio_player)
+	audio_player.stream = paper_sound
 	
+	
+@onready var audio_player: AudioStreamPlayer = AudioStreamPlayer.new()
+var paper_sound = preload("res://audio/sfx/picking up paper.mp3")
+
+
+func play_paper_sound() -> void:
+	print("sound")
+	audio_player.stream = paper_sound
+	audio_player.play(0.2)
 
 var ORIGINX = 190
 var ORIGINY = 3800
@@ -28,6 +39,7 @@ var onScreen = false;
 
 
 func move_to_screen() -> void:
+	play_paper_sound()
 	print("sprite moved")
 	var tween := create_tween()
 	tween.tween_property(sprite, "position", Vector2(ONSCREENX, ONSCREENY), TWEENSPEED)

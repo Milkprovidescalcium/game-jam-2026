@@ -347,23 +347,23 @@ texture = ExtResource("15_07xlo")
 
 [node name="NorthCoord" type="Label" parent="InstructionsNode/ParentTexture/Coords" unique_id=1361705087]
 z_index = 999
-offset_left = -814.0654
-offset_top = -108.0
-offset_right = 975.9155
-offset_bottom = 1259.0
+offset_left = -745.6648
+offset_top = -68.0
+offset_right = 1044.3162
+offset_bottom = 1299.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 400
+theme_override_font_sizes/font_size = 350
 text = "100
 "
 
 [node name="EastCord" type="Label" parent="InstructionsNode/ParentTexture/Coords" unique_id=1306430378]
 z_index = 999
-offset_left = 211.94604
-offset_top = -137.0
-offset_right = 2001.927
-offset_bottom = 1230.0
+offset_left = 250.48169
+offset_top = -107.0
+offset_right = 2040.4626
+offset_bottom = 1260.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 400
+theme_override_font_sizes/font_size = 350
 text = "100
 "
 

@@ -14,6 +14,24 @@ extends Node2D
 
 @onready var canvas: CanvasLayer = $CanvasLayer
 
+
+@onready var audio_player: AudioStreamPlayer = AudioStreamPlayer.new()
+
+var paper_sound = preload("res://audio/sfx/picking up paper.mp3")
+var paper_putdown = preload("res://audio/sfx/paper put down.mp3")
+
+
+	
+
+func play_paper_sound() -> void:
+	audio_player.stream = paper_sound
+	audio_player.play(0.2) #idk why its 0.2 just dont change
+	
+func play_paper_putdown() -> void:
+	audio_player.stream = paper_putdown
+	audio_player.play(0.2)
+
+
 func _ready() -> void:
 	#makes all the sprite's y value get like pivoted to the bottom instead of the middle
 	sprite.position = Vector2.ZERO
@@ -29,6 +47,7 @@ func _ready() -> void:
 	radiation.hide()
 	coords.hide()
 	
+	add_child(audio_player)
 	
 	randomize_from_seed(12345)
 
@@ -37,8 +56,9 @@ var ORIGINY = 9999
 
 var ONSCREENX = 190
 var ONSCREENY = 1800
-var TWEENSPEED = 0.25
+var TWEENSPEED = 0.5
 var onScreen = false;
+
 
 
 var rng := RandomNumberGenerator.new()
@@ -73,6 +93,8 @@ func randomize_from_seed(game_seed: int) -> void:
 
 
 func move_to_screen() -> void: 
+	play_paper_sound()
+	
 	print("sprite moved")
 	var tween := create_tween()
 	tween.tween_property(parent, "position", Vector2(ONSCREENX, ONSCREENY), TWEENSPEED)
@@ -83,6 +105,7 @@ func move_to_screen() -> void:
 
 
 func move_down() -> void:
+	play_paper_putdown()
 	print("moved down")
 	var tween := create_tween()
 	tween.tween_property(parent, "position", Vector2(ORIGINX, ORIGINY), TWEENSPEED)
@@ -95,6 +118,7 @@ func _hide_overlays() -> void:
 	knobs.hide()
 	switches.hide()
 	radiation.hide()
+	coords.hide()
 		
 
 var scroll_speed = 50
