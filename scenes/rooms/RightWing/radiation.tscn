@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bqv2qw0tt1fy3"]
+
+[ext_resource type="Script" uid="uid://h76y6jnccpip" path="res://scenes/rooms/RightWing/radiation.gd" id="1_0ctll"]
+
+[node name="Radiation" type="Node2D" unique_id=1892051468]
+script = ExtResource("1_0ctll")
+room_id = "right_wing"
+puzzle_name = "Temperature"
+
+[node name="Background" type="ColorRect" parent="." unique_id=1351527726]
+offset_left = -49.0
+offset_top = -50.0
+offset_right = 1122.0
+offset_bottom = 601.0
+color = Color(0.4617952, 0.5581886, 0.48575336, 1)
+
+[node name="StatusLabel" type="Label" parent="." unique_id=224551738]
+offset_left = 43.0
+offset_top = 50.0
+offset_right = 83.0
+offset_bottom = 73.0
+
+[node name="NameLabel" type="Label" parent="." unique_id=1189709946]
+offset_left = 40.0
+offset_top = 1.0
+offset_right = 448.0
+offset_bottom = 24.0
+
+[node name="CodeInput" type="LineEdit" parent="." unique_id=561060838]
+offset_left = 211.0
+offset_top = 203.0
+offset_right = 279.5
+offset_bottom = 234.0
+
+[node name="FixButton" type="Button" parent="." unique_id=180521324]
+offset_left = 113.0
+offset_top = 116.0
+offset_right = 177.0
+offset_bottom = 181.0

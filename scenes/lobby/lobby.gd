@@ -1,13 +1,15 @@
 # lobby.gd
 extends Control
 
-const SHIP_SCENE := "res://scenes/ship.tscn"
-const GROUND_SCENE := "res://scenes/ground_control.tscn"
+const SHIP_SCENE := "res://scenes/ship/ship.tscn"
+const GROUND_SCENE := "res://scenes/ground_control/ground_control.tscn"
 
 func _ready() -> void:
-	Network.player_connected.connect(_on_player_connected)
+	Network.player_connected.connect(_on_player_connected)   # ← this one
 	Network.connected_ok.connect(_on_connected)
-	Network.connection_failed.connect(func(): $StatusLabel.text = "Couldn't connect. Check the IP.")
+	Network.connection_failed.connect(func():
+		$StatusLabel.text = "Couldn't connect. Check the IP."
+		$JoinButton.disabled = false)
 	$HostButton.pressed.connect(_on_host)
 	$JoinButton.pressed.connect(_on_join)
 	$OfflineButton.pressed.connect(func(): get_tree().change_scene_to_file(SHIP_SCENE))
@@ -20,8 +22,12 @@ func _on_join() -> void:
 	var ip: String = $IPInput.text.strip_edges()
 	if ip.is_empty():
 		ip = "127.0.0.1"
-	if Network.join(ip) == OK:
+	var err := Network.join(ip)
+	if err == OK:
 		$StatusLabel.text = "Connecting to %s…" % ip
+		$JoinButton.disabled = true
+	else:
+		$StatusLabel.text = "That's not a valid IP (example: 192.168.1.42)"
 
 func _on_player_connected(_id: int) -> void:
 	if Network.is_ship():

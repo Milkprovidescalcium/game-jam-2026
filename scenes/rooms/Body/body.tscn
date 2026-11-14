@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[node name="BodyRoom" type="Node2D" unique_id=902114001]
+
+[node name="Background" type="ColorRect" parent="." unique_id=902114002]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.13, 0.15, 0.2, 1)
+
+[node name="NameLabel" type="Label" parent="." unique_id=902114003]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 460.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 32
+text = "MAIN BODY"
+
+[node name="DescLabel" type="Label" parent="." unique_id=902114004]
+offset_left = 40.0
+offset_top = 95.0
+offset_right = 460.0
+offset_bottom = 230.0
+text = "The central corridor. Every other section of the ship branches off from here.
+
+You can't see which systems are failing - Ground Control can. Talk to them and use the buttons at the bottom right to move."
+autowrap_mode = 3

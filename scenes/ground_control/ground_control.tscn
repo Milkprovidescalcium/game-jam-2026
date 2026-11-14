@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://634u6b6sbi0s"]
+
+[ext_resource type="Script" uid="uid://bsoh1hrpxdpm1" path="res://scenes/ground_control/ground_control.gd" id="0_gcscr"]
+[ext_resource type="PackedScene" uid="uid://my762trhbs4g" path="res://scenes/chat/chat.tscn" id="1_dws2j"]
+[ext_resource type="PackedScene" uid="uid://gsq420gyuwff" path="res://scenes/ui/ship_map.tscn" id="1_jp6i2"]
+[ext_resource type="PackedScene" uid="uid://bjj87363a6sjp" path="res://scenes/ui/timer_label.tscn" id="2_05fu4"]
+[ext_resource type="PackedScene" uid="uid://bnu5axbkt0ikn" path="res://scenes/ui/healthbar.tscn" id="4_05fu4"]
+
+[node name="GroundControl" type="Node2D" unique_id=1403342754]
+script = ExtResource("0_gcscr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=939340534]
+
+[node name="TimerLabel" parent="CanvasLayer" unique_id=52369526 instance=ExtResource("2_05fu4")]
+
+[node name="ShipMap" parent="CanvasLayer" unique_id=1489874199 instance=ExtResource("1_jp6i2")]
+
+[node name="ChatBox" parent="CanvasLayer" unique_id=1585531339 instance=ExtResource("1_dws2j")]
+offset_left = 3.0
+offset_top = 398.0
+offset_right = 403.0
+offset_bottom = 648.0
+
+[node name="Healthbar" parent="CanvasLayer" unique_id=946722934 instance=ExtResource("4_05fu4")]

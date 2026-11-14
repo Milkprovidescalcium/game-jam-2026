@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://my762trhbs4g"]
+
+[ext_resource type="Script" uid="uid://5nbatjg2i3ps" path="res://scenes/chat/chat_box.gd" id="1_1uvf6"]
+
+[node name="ChatBox" type="VBoxContainer" unique_id=1585531339]
+custom_minimum_size = Vector2(400, 250)
+offset_right = 69.0
+offset_bottom = 30.0
+theme_override_constants/separation = 8
+script = ExtResource("1_1uvf6")
+
+[node name="MessageLog" type="RichTextLabel" parent="." unique_id=1429952987]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "
+"
+scroll_following = true
+
+[node name="Input" type="LineEdit" parent="." unique_id=900526223]
+layout_mode = 2
+placeholder_text = "Type a message, press Enter"
+max_length = 80
+context_menu_enabled = false

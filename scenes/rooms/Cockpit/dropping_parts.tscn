@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dw7uko8alfjfs"]
+
+[ext_resource type="Script" uid="uid://dl5dxtpllp5h1" path="res://scenes/rooms/Cockpit/dropping_parts.gd" id="1_npjp4"]
+
+[node name="DroppingParts" type="Node2D" unique_id=1258382803]
+position = Vector2(50, 46)
+script = ExtResource("1_npjp4")
+room_id = "cockpit"
+puzzle_name = "Dropping Parts"
+
+[node name="Background" type="ColorRect" parent="." unique_id=1099999852]
+offset_left = -49.0
+offset_top = -50.0
+offset_right = 1122.0
+offset_bottom = 601.0
+color = Color(0.4617952, 0.5581886, 0.48575336, 1)
+
+[node name="StatusLabel" type="Label" parent="." unique_id=456906281]
+offset_left = 43.0
+offset_top = 50.0
+offset_right = 83.0
+offset_bottom = 73.0
+
+[node name="NameLabel" type="Label" parent="." unique_id=183574150]
+offset_left = 40.0
+offset_top = 1.0
+offset_right = 448.0
+offset_bottom = 24.0
+text = "ADADADADADAD"
+
+[node name="CodeInput" type="LineEdit" parent="." unique_id=1664104406]
+offset_left = 211.0
+offset_top = 203.0
+offset_right = 279.5
+offset_bottom = 234.0
+
+[node name="FixButton" type="Button" parent="." unique_id=173721998]
+offset_left = 113.0
+offset_top = 116.0
+offset_right = 177.0
+offset_bottom = 181.0
