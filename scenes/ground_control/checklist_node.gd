@@ -5,7 +5,6 @@ extends Node2D
 @onready var top_border: Sprite2D = $TopOfCamForCheckListSprite
 
 
-
 func _ready() -> void:
 	#makes all the sprite's y value get like pivoted to the bottom instead of the middle
 	sprite.offset.y = -sprite.texture.get_height() / 2.0
@@ -17,13 +16,9 @@ var ORIGINX = 190
 var ORIGINY = 3800
 
 var ONSCREENX = 190
-var ONSCREENY = 1800
+var ONSCREENY = 1500
 var TWEENSPEED = 0.25
 var onScreen = false;
-
-signal check_list_up
-signal check_list_down
-
 
 func move_to_screen() -> void:
 	print("sprite moved")
@@ -31,7 +26,6 @@ func move_to_screen() -> void:
 	tween.tween_property(sprite, "position", Vector2(ONSCREENX, ONSCREENY), TWEENSPEED)
 	
 	onScreen = true;
-	check_list_up.emit()
 	print(sprite.position)
 	
 func move_down() -> void:
@@ -40,8 +34,6 @@ func move_down() -> void:
 	tween.tween_property(sprite, "position", Vector2(ORIGINX, ORIGINY), TWEENSPEED)
 	
 	onScreen = false
-	check_list_up.emit()
-	
 
 var scroll_speed = 50
 
