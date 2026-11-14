@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nt080n7v3vw3" path="res://scenes/ship/body.gd" id="1_x0fp6"]
 [ext_resource type="Texture2D" uid="uid://nfwm36meqvwl" path="res://art/rooms/ArrowHover.png" id="2_tekn2"]
-[ext_resource type="Texture2D" uid="uid://8tyomlyafbtu" path="res://art/rooms/spaceBody.jpeg.webp" id="3_tekn2"]
+[ext_resource type="Texture2D" uid="uid://bn3mp1m2c4k6c" path="res://art/rooms/body.png" id="3_x0fp6"]
 
 [node name="Body" type="Node2D" unique_id=672123077]
 script = ExtResource("1_x0fp6")
@@ -62,9 +62,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=217574918]
 z_index = -999
-position = Vector2(576.00006, 322.00003)
-scale = Vector2(0.6020833, 0.60925925)
-texture = ExtResource("3_tekn2")
+position = Vector2(574.56256, 325.09375)
+scale = Vector2(0.24059895, 0.2428935)
+texture = ExtResource("3_x0fp6")
 
 [connection signal="pressed" from="GoToLeftWing/GoToLeftWingButton" to="." method="_on_go_to_left_wing_button_pressed"]
 [connection signal="pressed" from="GoToCockpit/GoToCockpitButton" to="." method="_on_go_to_cockpit_button_pressed"]

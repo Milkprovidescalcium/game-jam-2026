@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cfc8kd6g8anax"]
 
 [ext_resource type="Script" uid="uid://51nwua8s5mt7" path="res://scenes/lobby/lobby.gd" id="1_ll2xe"]
+[ext_resource type="Texture2D" uid="uid://ca0ng064hqkv6" path="res://art/rooms/title screen.png" id="2_ukx7c"]
 
 [node name="Lobby" type="Control" unique_id=1798890035]
 layout_mode = 3
@@ -13,6 +14,7 @@ offset_left = 258.0
 offset_top = 355.0
 offset_right = 504.0
 offset_bottom = 426.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "
 "
@@ -45,6 +47,7 @@ offset_right = 783.0
 offset_bottom = 348.0
 
 [node name="OfflineButton" type="Button" parent="." unique_id=328996038]
+visible = false
 layout_mode = 0
 offset_left = 393.0
 offset_top = 17.0
@@ -52,3 +55,9 @@ offset_right = 727.0
 offset_bottom = 113.0
 theme_override_font_sizes/font_size = 64
 text = "Offline"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1448168097]
+z_index = -1
+position = Vector2(578.75, 328.875)
+scale = Vector2(0.24052083, 0.24453706)
+texture = ExtResource("2_ukx7c")

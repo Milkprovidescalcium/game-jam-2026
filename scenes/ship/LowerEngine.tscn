@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uhpq54l83th1" path="res://scenes/ship/lower_engine.gd" id="1_6df0e"]
 [ext_resource type="Texture2D" uid="uid://nfwm36meqvwl" path="res://art/rooms/ArrowHover.png" id="2_6df0e"]
-[ext_resource type="Texture2D" uid="uid://cy27eur556r46" path="res://art/rooms/EngineRoom.jpeg" id="3_dr8xw"]
+[ext_resource type="Texture2D" uid="uid://dai3kc7xatg1s" path="res://art/rooms/engineroom.png" id="3_dr8xw"]
 
 [node name="LowerEngine" type="Node2D" unique_id=1373055352]
 script = ExtResource("1_6df0e")
@@ -22,8 +22,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=680393440]
 z_index = -1
-position = Vector2(582.75, 324.25)
-scale = Vector2(1.6378341, 1.4976798)
+position = Vector2(576.9934, 324.8603)
+scale = Vector2(0.2391694, 0.23862201)
 texture = ExtResource("3_dr8xw")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=124660267]

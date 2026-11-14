@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2tai0edm8rp5" path="res://scenes/ship/left_wing.gd" id="1_y43x1"]
 [ext_resource type="Texture2D" uid="uid://nfwm36meqvwl" path="res://art/rooms/ArrowHover.png" id="2_sov7g"]
-[ext_resource type="Texture2D" uid="uid://bqc74ov7ujsrq" path="res://art/rooms/LeftShell.png" id="3_1cbtj"]
+[ext_resource type="Texture2D" uid="uid://tfdah0fkqk80" path="res://art/rooms/left wing.png" id="3_1cbtj"]
 
 [node name="LeftWing" type="Node2D" unique_id=1178124154]
 script = ExtResource("1_y43x1")
@@ -22,8 +22,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1037543436]
 z_index = -1
-position = Vector2(579.5, 322)
-scale = Vector2(0.8561947, 0.6306483)
+position = Vector2(579.9082, 325.65622)
+scale = Vector2(0.24170488, 0.24025464)
 texture = ExtResource("3_1cbtj")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=378982482]
