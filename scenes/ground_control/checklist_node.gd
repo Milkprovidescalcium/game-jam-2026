@@ -13,6 +13,10 @@ func _ready() -> void:
 	bottom_border.offset.y = -bottom_border.texture.get_height() / 2.0
 	top_border.offset.y = -top_border.texture.get_height() / 2.0
 	
+	sprite.position.x = ORIGINX
+	sprite.position.y = ORIGINY
+	
+	
 
 var ORIGINX = 190
 var ORIGINY = 3800
@@ -21,6 +25,7 @@ var ONSCREENX = 190
 var ONSCREENY = 1800
 var TWEENSPEED = 0.25
 var onScreen = false;
+
 
 func move_to_screen() -> void:
 	print("sprite moved")

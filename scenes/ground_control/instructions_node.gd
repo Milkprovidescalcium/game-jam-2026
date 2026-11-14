@@ -12,6 +12,10 @@ func _ready() -> void:
 	bottom_border.offset.y = -bottom_border.texture.get_height() / 2.0
 	top_border.offset.y = -top_border.texture.get_height() / 2.0
 	
+	sprite.position.y = ORIGINY
+	sprite.position.x = ORIGINX
+	
+	
 
 var ORIGINX = 190
 var ORIGINY = 3800

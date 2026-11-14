@@ -53,7 +53,7 @@ scale = Vector2(87.15973, 1)
 texture = ExtResource("5_1epie")
 
 [node name="Instructions" type="Sprite2D" parent="InstructionsNode" unique_id=341223333]
-position = Vector2(190, 3800)
+position = Vector2(34.999985, 3548.0002)
 scale = Vector2(1.3854661, 1.7404463)
 texture = ExtResource("6_iw7wk")
 
@@ -84,6 +84,11 @@ offset_bottom = 648.0
 
 [node name="Healthbar" parent="InstructionsNode/CanvasLayer" unique_id=946722934 instance=ExtResource("5_k1cpu")]
 
+[node name="PlaceHolder" type="Sprite2D" parent="InstructionsNode" unique_id=1005867828]
+z_index = 10
+position = Vector2(2038, 3915.0002)
+scale = Vector2(0.37752983, 0.36423892)
+
 [node name="TableNode" type="Node2D" parent="." unique_id=1693905726]
 
 [node name="ScreenNode" type="Node2D" parent="TableNode" unique_id=835402527]
@@ -104,7 +109,7 @@ texture = ExtResource("7_u6d5m")
 
 [node name="CheckList" type="Sprite2D" parent="TableNode/ChecklistNode" unique_id=1797006197]
 z_index = 3
-position = Vector2(195.01901, 3799.9802)
+position = Vector2(-1071.9998, 4350)
 scale = Vector2(0.37554148, 0.36286834)
 texture = ExtResource("9_07xlo")
 
@@ -153,7 +158,7 @@ offset_bottom = -169.17566
 
 [node name="OxygenSprite" type="Sprite2D" parent="TableNode/PapersNode" unique_id=711996357]
 z_index = 999
-position = Vector2(193.33464, 3800)
+position = Vector2(618, 4568)
 scale = Vector2(0.37752983, 0.36423892)
 texture = ExtResource("12_13a2u")
 
