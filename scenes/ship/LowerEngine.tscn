@@ -26,4 +26,17 @@ position = Vector2(582.75, 324.25)
 scale = Vector2(1.6378341, 1.4976798)
 texture = ExtResource("3_dr8xw")
 
+[node name="UI" type="CanvasLayer" parent="." unique_id=124660267]
+
+[node name="PuzzleButton" type="Button" parent="UI" unique_id=1209415831]
+anchors_preset = -1
+anchor_left = -0.006076389
+offset_left = 518.0
+offset_top = 304.0
+offset_right = 638.0
+offset_bottom = 436.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Puzzle" type="Node2D" parent="." unique_id=821705365]
+
 [connection signal="pressed" from="GoToBody/GoToBody" to="." method="_on_go_to_body_pressed"]

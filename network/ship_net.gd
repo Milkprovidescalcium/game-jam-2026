@@ -16,13 +16,20 @@ signal puzzle_info(room_id: String, info: Dictionary)
 signal ship_health_changed(value: int)
 # Ship only
 signal ground_ready
+signal manual_received(manual: Dictionary)	
 
 @export var signal_delay := 3.0   # seconds, the "speed of light" delay
 var signal_lost := false           # true during orbit blackout
 var ground_is_ready := false       # ship side: ground control has loaded its scene
+var manual := {}
 
 func _ready() -> void:
 	multiplayer.peer_disconnected.connect(func(_id): ground_is_ready = false)
+
+# Back to a clean slate; the lobby calls this before every new game
+func reset() -> void:
+	signal_lost = false
+	ground_is_ready = false
 
 func is_ground() -> bool:
 	return not multiplayer.is_server()
@@ -119,3 +126,11 @@ func set_ship_health(value: int) -> void:
 @rpc("authority", "call_remote", "reliable")
 func _health(value: int) -> void:
 	ship_health_changed.emit(value)
+	
+func send_manual(data: Dictionary) -> void:
+	_manual.rpc(data)
+
+@rpc("authority", "call_remote", "reliable")
+func _manual(data: Dictionary) -> void:
+	manual = data
+	manual_received.emit(data)

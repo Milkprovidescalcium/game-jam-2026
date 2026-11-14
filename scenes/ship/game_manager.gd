@@ -32,16 +32,16 @@ func start_game() -> void:
 	print("GAME STARTED")
 	if game_seed == 0:
 		game_seed = randi()
-	rng.seed = game_seed
+		rng.seed = game_seed
 	print("Round seed: ", game_seed)
-
+	_create_manual()
 	modules.clear()
 	for node in get_tree().get_nodes_in_group("puzzle"):
 		var m := node as PuzzleModule
 		if m == null:
 			continue
 		modules.append(m)
-		m.setup(game_seed + hash(m.room_id))
+		m.setup(game_seed + hash(m.room_id), manual.get(m.room_id, []))
 		if not m.broken_changed.is_connected(_on_module_broken_changed):
 			m.broken_changed.connect(_on_module_broken_changed)
 			m.failed.connect(_on_module_failed)
@@ -54,6 +54,7 @@ func start_game() -> void:
 	_next_break = first_break_delay
 	running = true
 	ShipNet.start_game(game_seed)
+	ShipNet.send_manual(manual)
 	_sync(true)
 
 func _process(delta: float) -> void:
@@ -91,6 +92,7 @@ func _on_module_broken_changed(m: PuzzleModule, is_broken: bool) -> void:
 	if is_broken:
 		# Send the fix info first so the map has it when the room starts flashing
 		var info := m.answer.duplicate()
+		info.erase("solution")
 		info["puzzle"] = m.puzzle_name
 		ShipNet.send_puzzle_info(m.room_id, info)
 	ShipNet.set_room_broken(m.room_id, is_broken)
@@ -115,3 +117,28 @@ func _end(won: bool) -> void:
 	_sync(true)
 	ShipNet.end_game(won)
 	print("YOU SURVIVED!" if won else "SHIP DESTROYED")
+	
+
+
+# room_id -> [how many values, min, max, number of levels]
+const MANUAL_SPEC := {
+	"cockpit":      [2, 100, 275, 1],   # Landing: X, Y
+	"right_wing":   [4, 0, 3, 3],       # Radiation
+	"left_wing":    [3, 0, 3, 3],       # Vents
+	"lower_engine": [5, 0, 1, 4],       # Temperature
+}
+
+var manual := {} 
+
+func _create_manual() -> void:
+	manual.clear()
+	for room_id in MANUAL_SPEC:
+		var spec: Array = MANUAL_SPEC[room_id]
+		var rules: Array = []
+		while rules.size() < spec[3]:
+			var rule: Array = []
+			for i in spec[0]:
+				rule.append(rng.randi_range(spec[1], spec[2]))
+			if not rule in rules:  
+				rules.append(rule)
+		manual[room_id] = rules

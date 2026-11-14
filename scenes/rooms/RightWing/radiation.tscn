@@ -1,39 +1,85 @@
 [gd_scene format=3 uid="uid://bqv2qw0tt1fy3"]
 
 [ext_resource type="Script" uid="uid://h76y6jnccpip" path="res://scenes/rooms/RightWing/radiation.gd" id="1_0ctll"]
+[ext_resource type="Texture2D" uid="uid://da1c8c2p3si1v" path="res://art/rooms/Radiation Puzzle.jpg" id="2_art"]
 
 [node name="Radiation" type="Node2D" unique_id=1892051468]
 script = ExtResource("1_0ctll")
 room_id = "right_wing"
-puzzle_name = "Temperature"
+puzzle_name = "Radiation"
 
-[node name="Background" type="ColorRect" parent="." unique_id=1351527726]
-offset_left = -49.0
-offset_top = -50.0
-offset_right = 1122.0
-offset_bottom = 601.0
-color = Color(0.4617952, 0.5581886, 0.48575336, 1)
+[node name="Dimmer" type="ColorRect" parent="." unique_id=1390703502]
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 2152.0
+offset_bottom = 1648.0
+color = Color(0.03, 0.04, 0.07, 0.88)
 
-[node name="StatusLabel" type="Label" parent="." unique_id=224551738]
-offset_left = 43.0
-offset_top = 50.0
-offset_right = 83.0
-offset_bottom = 73.0
+[node name="Art" type="TextureRect" parent="." unique_id=1434626946]
+offset_left = 436.0
+offset_top = 90.0
+offset_right = 1126.0
+offset_bottom = 484.0
+mouse_filter = 2
+texture = ExtResource("2_art")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="NameLabel" type="Label" parent="." unique_id=1189709946]
-offset_left = 40.0
-offset_top = 1.0
-offset_right = 448.0
-offset_bottom = 24.0
+[node name="StatusPanel" type="ColorRect" parent="." unique_id=1351527726]
+offset_left = 24.0
+offset_top = 90.0
+offset_right = 406.0
+offset_bottom = 384.0
+mouse_filter = 2
+color = Color(0.15, 0.35, 0.2, 1)
+
+[node name="NameLabel" type="Label" parent="StatusPanel" unique_id=1189709946]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 366.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 30
+text = "RADIATION"
+
+[node name="StatusLabel" type="Label" parent="StatusPanel" unique_id=224551738]
+offset_left = 16.0
+offset_top = 66.0
+offset_right = 366.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 22
+text = "OK"
+
+[node name="HintLabel" type="Label" parent="StatusPanel" unique_id=1295201396]
+offset_left = 16.0
+offset_top = 116.0
+offset_right = 366.0
+offset_bottom = 280.0
+text = "All systems nominal. Nothing to repair here."
+autowrap_mode = 3
 
 [node name="CodeInput" type="LineEdit" parent="." unique_id=561060838]
-offset_left = 211.0
-offset_top = 203.0
-offset_right = 279.5
-offset_bottom = 234.0
+offset_left = 436.0
+offset_top = 504.0
+offset_right = 786.0
+offset_bottom = 560.0
+theme_override_font_sizes/font_size = 26
+placeholder_text = "Repair code"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
 
 [node name="FixButton" type="Button" parent="." unique_id=180521324]
-offset_left = 113.0
-offset_top = 116.0
-offset_right = 177.0
-offset_bottom = 181.0
+offset_left = 800.0
+offset_top = 504.0
+offset_right = 956.0
+offset_bottom = 560.0
+theme_override_font_sizes/font_size = 20
+text = "REPAIR"
+
+[node name="CloseButton" type="Button" parent="." unique_id=1003263729]
+offset_left = 970.0
+offset_top = 504.0
+offset_right = 1126.0
+offset_bottom = 560.0
+theme_override_font_sizes/font_size = 20
+text = "BACK"

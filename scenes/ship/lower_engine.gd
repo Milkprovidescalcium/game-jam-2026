@@ -10,12 +10,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func move_scene(scene_name: String) -> void:
-	print("meow meow meow meow")
-	get_tree().change_scene_to_file(scene_name)
+func move_scene(room_id: String) -> void:
+	# Finds your main Ship node and calls your backend function!
+	var ship = get_tree().current_scene
+	if ship.has_method("go_to"):
+		ship.go_to(room_id)
+	else:
+		push_error("Could not find Ship root node!")
 	
 	
 func _on_go_to_body_pressed() -> void:
-	print("I FUCKING HATEEE MY LIFE")
-	move_scene("res://scenes/ship/Body.tscn")
+	move_scene("body")
 	pass # Replace with function body.

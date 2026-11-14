@@ -1,23 +1,61 @@
 class_name PuzzleModule
 extends Node2D   # change to Control if your puzzles are built from UI nodes
 
+## Base class for every puzzle. A puzzle lives under Ship/Puzzles the whole
+## round (so it can break while the player is somewhere else) and stays hidden
+## until the room's PuzzleButton opens it:
+##   ship.open_puzzle()    # shows the puzzle of the room the player is in
+##   ship.close_puzzle()   # hides it again (also happens when the player moves)
+## Give the scene a Button called "CloseButton" and it closes the puzzle for you.
+
 signal broken_changed(module: PuzzleModule, is_broken: bool)
 signal failed(module: PuzzleModule)
+signal opened(module: PuzzleModule)
+signal closed(module: PuzzleModule)
 
-@export var room_id: String = ""       # e.g. "cockpit"
+@export var room_id: String = ""       # e.g. "cockpit" - must match a room in ship.gd
 @export var puzzle_name: String = ""   # e.g. "Dropping Parts"
 
 var is_broken := false
+var is_open := false
 var answer: Dictionary = {}
 var rng := RandomNumberGenerator.new()
 
+
+
 func _ready() -> void:
 	add_to_group("puzzle")
+	hide()   # hidden puzzles ignore clicks but keep running
+	var close_button := get_node_or_null("CloseButton") as BaseButton
+	if close_button:
+		close_button.pressed.connect(close)
 
 # Called once by the GameManager at round start
-func setup(seed_value: int) -> void:
-	rng.seed = seed_value
+var rules: Array = [] 
 
+# Called once by the GameManager at round start
+func setup(seed_value: int, room_rules: Array = []) -> void:
+	rng.seed = seed_value
+	rules = room_rules
+
+# ---- Showing / hiding (the Ship calls these) ----
+func open() -> void:
+	if is_open:
+		return
+	is_open = true
+	show()
+	_on_opened()
+	opened.emit(self)
+
+func close() -> void:
+	if not is_open:
+		return
+	is_open = false
+	hide()
+	_on_closed()
+	closed.emit(self)
+
+# ---- Breaking / fixing ----
 func break_module() -> void:
 	if is_broken:
 		return
@@ -47,3 +85,9 @@ func _on_broken() -> void:
 
 func _on_repaired() -> void:
 	pass   # stop effects
+
+func _on_opened() -> void:
+	pass   # the player just opened this puzzle
+
+func _on_closed() -> void:
+	pass   # the player closed it or left the room
