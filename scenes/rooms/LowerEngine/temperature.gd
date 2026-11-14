@@ -5,6 +5,9 @@ extends "res://scenes/modules/panel_puzzle.gd"
 ## "Temperature Guide", so the thermometer is full; each level after that sits
 ## one section lower.
 
+
+
+
 const HEAT_COLOR := Color(1.0, 0.45, 0.15)
 
 @onready var switches: Node = $Switches

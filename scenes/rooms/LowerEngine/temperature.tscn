@@ -9,9 +9,9 @@
 
 [node name="Temperature" type="Node2D" unique_id=1785828127]
 script = ExtResource("1_471k6")
+broken_hint = "Tell Ground Control how high the thermometer is. Flip the switches to match their manual, then press REPAIR."
 room_id = "lower_engine"
 puzzle_name = "Temperature"
-broken_hint = "Tell Ground Control how high the thermometer is. Flip the switches to match their manual, then press REPAIR."
 
 [node name="Dimmer" type="ColorRect" parent="." unique_id=320410946]
 offset_left = -1000.0
@@ -41,34 +41,34 @@ expand_mode = 1
 
 [node name="NameLabel" type="Label" parent="StatusPanel" unique_id=1250797845]
 layout_mode = 0
-theme_override_fonts/font = ExtResource("4_pidyn")
-text = "TEMPERATURE"
 offset_left = 41.0
 offset_top = 14.0
 offset_right = 372.0
 offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("4_pidyn")
 theme_override_font_sizes/font_size = 44
+text = "TEMPERATURE"
 
 [node name="StatusLabel" type="Label" parent="StatusPanel" unique_id=1863673106]
 layout_mode = 0
-theme_override_fonts/font = ExtResource("4_pidyn")
-text = "OK"
 offset_left = 41.0
 offset_top = 58.0
 offset_right = 290.0
 offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("4_pidyn")
 theme_override_font_sizes/font_size = 34
+text = "OK"
 
 [node name="HintLabel" type="Label" parent="StatusPanel" unique_id=579499921]
 layout_mode = 0
-theme_override_fonts/font = ExtResource("4_pidyn")
-text = "All systems nominal. Nothing to repair here."
-autowrap_mode = 3
 offset_left = 41.0
 offset_top = 98.0
 offset_right = 286.0
 offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("4_pidyn")
 theme_override_font_sizes/font_size = 28
+text = "All systems nominal. Nothing to repair here."
+autowrap_mode = 3
 
 [node name="Symptom" type="Control" parent="StatusPanel" unique_id=2146645364]
 anchors_preset = 0
@@ -80,13 +80,12 @@ mouse_filter = 2
 
 [node name="Title" type="Label" parent="StatusPanel/Symptom" unique_id=1298069806]
 layout_mode = 0
-text = "TEMP"
-horizontal_alignment = 1
-offset_left = 0.0
 offset_top = -6.0
 offset_right = 70.0
 offset_bottom = 24.0
 theme_override_font_sizes/font_size = 28
+text = "TEMP"
+horizontal_alignment = 1
 
 [node name="Thermometer" type="Control" parent="StatusPanel/Symptom" unique_id=1412827761]
 anchors_preset = 0
@@ -194,13 +193,13 @@ offset_left = 800.0
 offset_top = 504.0
 offset_right = 956.0
 offset_bottom = 560.0
-text = "REPAIR"
 theme_override_font_sizes/font_size = 32
+text = "REPAIR"
 
 [node name="CloseButton" type="Button" parent="." unique_id=2021583681]
 offset_left = 970.0
 offset_top = 504.0
 offset_right = 1126.0
 offset_bottom = 560.0
-text = "BACK"
 theme_override_font_sizes/font_size = 32
+text = "BACK"

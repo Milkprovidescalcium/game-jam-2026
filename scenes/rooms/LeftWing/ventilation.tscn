@@ -9,9 +9,9 @@
 
 [node name="Ventilation" type="Node2D" unique_id=294214619]
 script = ExtResource("1_68oci")
+broken_hint = "Tell Ground Control how full the oxygen bar is. Turn the knobs to match their manual, then press REPAIR."
 room_id = "left_wing"
 puzzle_name = "Ventilation"
-broken_hint = "Tell Ground Control how full the oxygen bar is. Turn the knobs to match their manual, then press REPAIR."
 
 [node name="Dimmer" type="ColorRect" parent="." unique_id=1199130909]
 offset_left = -1000.0
@@ -41,95 +41,87 @@ expand_mode = 1
 
 [node name="NameLabel" type="Label" parent="StatusPanel" unique_id=947876999]
 layout_mode = 0
-theme_override_fonts/font = ExtResource("4_g3w68")
-text = "VENTILATION"
 offset_left = 42.0
 offset_top = 14.0
 offset_right = 372.0
 offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("4_g3w68")
 theme_override_font_sizes/font_size = 44
+text = "VENTILATION"
 
 [node name="StatusLabel" type="Label" parent="StatusPanel" unique_id=423946139]
 layout_mode = 0
-theme_override_fonts/font = ExtResource("4_g3w68")
-text = "OK"
 offset_left = 42.0
 offset_top = 58.0
 offset_right = 372.0
 offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("4_g3w68")
 theme_override_font_sizes/font_size = 34
+text = "OK"
 
 [node name="HintLabel" type="Label" parent="StatusPanel" unique_id=1946837192]
 layout_mode = 0
-theme_override_fonts/font = ExtResource("4_g3w68")
-text = "All systems nominal. Nothing to repair here."
-autowrap_mode = 3
 offset_left = 42.0
 offset_top = 98.0
 offset_right = 366.0
 offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("4_g3w68")
 theme_override_font_sizes/font_size = 28
+text = "All systems nominal. Nothing to repair here."
+autowrap_mode = 3
 
 [node name="Symptom" type="Control" parent="StatusPanel" unique_id=1816087198]
 anchors_preset = 0
-mouse_filter = 2
 offset_left = 42.0
 offset_top = 204.0
 offset_right = 372.0
 offset_bottom = 284.0
+mouse_filter = 2
 
 [node name="Title" type="Label" parent="StatusPanel/Symptom" unique_id=642730241]
 layout_mode = 0
-text = "OXYGEN LEVEL"
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 320.0
 offset_bottom = 30.0
 theme_override_font_sizes/font_size = 28
+text = "OXYGEN LEVEL"
 
 [node name="Bar" type="Control" parent="StatusPanel/Symptom" unique_id=799878127]
 anchors_preset = 0
-mouse_filter = 2
-offset_left = 0.0
 offset_top = 36.0
 offset_right = 320.0
 offset_bottom = 70.0
+mouse_filter = 2
 
 [node name="Seg1" type="ColorRect" parent="StatusPanel/Symptom/Bar" unique_id=523729283]
 layout_mode = 0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.45)
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 74.0
 offset_bottom = 34.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
 
 [node name="Seg2" type="ColorRect" parent="StatusPanel/Symptom/Bar" unique_id=616455894]
 layout_mode = 0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.45)
 offset_left = 80.0
-offset_top = 0.0
 offset_right = 154.0
 offset_bottom = 34.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
 
 [node name="Seg3" type="ColorRect" parent="StatusPanel/Symptom/Bar" unique_id=514743897]
 layout_mode = 0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.45)
 offset_left = 160.0
-offset_top = 0.0
 offset_right = 234.0
 offset_bottom = 34.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
 
 [node name="Seg4" type="ColorRect" parent="StatusPanel/Symptom/Bar" unique_id=1866425269]
 layout_mode = 0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.45)
 offset_left = 240.0
-offset_top = 0.0
 offset_right = 314.0
 offset_bottom = 34.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
 
 [node name="Knobs" type="Node2D" parent="." unique_id=2117909015]
 
@@ -168,13 +160,13 @@ offset_left = 800.0
 offset_top = 504.0
 offset_right = 956.0
 offset_bottom = 560.0
-text = "REPAIR"
 theme_override_font_sizes/font_size = 32
+text = "REPAIR"
 
 [node name="CloseButton" type="Button" parent="." unique_id=2146445860]
 offset_left = 970.0
 offset_top = 504.0
 offset_right = 1126.0
 offset_bottom = 560.0
-text = "BACK"
 theme_override_font_sizes/font_size = 32
+text = "BACK"

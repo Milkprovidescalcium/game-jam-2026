@@ -21,6 +21,9 @@ const COLOR_TEXTURES: Array[Texture2D] = [
 var sequence: Array = []   # the colours pressed so far
 
 func _ready() -> void:
+	add_child(audio_player)
+	audio_player.stream = button_sound
+	audio_player.volume_db += 20.0 # Adds 5 decibels
 	super()
 	$Buttons/Blue.pressed.connect(_press.bind(0))
 	$Buttons/Red.pressed.connect(_press.bind(1))
@@ -28,8 +31,17 @@ func _ready() -> void:
 	$Buttons/Yellow.pressed.connect(_press.bind(3))
 	$ClearButton.pressed.connect(_clear)
 	_clear()
+	
+@onready var audio_player: AudioStreamPlayer = AudioStreamPlayer.new()
+var button_sound = preload("res://audio/sfx/light_switch.mp3")
+
+
+func play_sound() -> void:
+	audio_player.stream = button_sound
+	audio_player.play(0.2) #idk why its 0.2 just dont change
 
 func _press(color: int) -> void:
+	play_sound()
 	if sequence.size() >= slots.size():
 		return   # already full - CLEAR to start again
 	sequence.append(color)

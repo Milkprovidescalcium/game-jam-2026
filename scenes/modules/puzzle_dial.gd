@@ -18,8 +18,21 @@ func _ready() -> void:
 	pivot_offset = size / 2       # turn around the centre, not the corner
 	pressed.connect(func(): set_value(value + 1))
 	set_value(value)
+	add_child(audio_player)
+	audio_player.stream = button_sound
+	audio_player.volume_db += 20.0 # Adds 5 decibels
+	
+	
+@onready var audio_player: AudioStreamPlayer = AudioStreamPlayer.new()
+var button_sound = preload("res://audio/sfx/light_switch.mp3")
+
+
+func play_sound() -> void:
+	audio_player.stream = button_sound
+	audio_player.play(0.2) #idk why its 0.2 just dont change
 
 func set_value(new_value: int) -> void:
+	play_sound()
 	value = posmod(new_value, choices)
 	rotation_degrees = value * step_degrees
 	value_changed.emit(value)
