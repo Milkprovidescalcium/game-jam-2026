@@ -49,7 +49,30 @@ func _ready() -> void:
 	
 	add_child(audio_player)
 	
-	randomize_from_seed(12345)
+	ShipNet.manual_received.connect(apply_manual)
+	if not ShipNet.manual.is_empty():
+		apply_manual(ShipNet.manual)
+		
+func apply_manual(manual: Dictionary) -> void:
+	var vents: Array = manual.get("left_wing", [])        # 3 levels x 3 knobs
+	for lvl in vents.size():
+		for i in vents[lvl].size():
+			knobs.get_child(lvl * vents[lvl].size() + i).rotation_degrees = vents[lvl][i] * 90
+
+	var rad: Array = manual.get("right_wing", [])         # 3 levels x 4 sprites
+	for lvl in rad.size():
+		for i in rad[lvl].size():
+			radiation.get_child(lvl * rad[lvl].size() + i).texture = radiation_textures[rad[lvl][i]]
+
+	var temp: Array = manual.get("lower_engine", [])      # 4 levels x 5 switches
+	for lvl in temp.size():
+		for i in temp[lvl].size():
+			switches.get_child(lvl * temp[lvl].size() + i).rotation_degrees = temp[lvl][i] * 180
+
+	var land: Array = manual.get("cockpit", [])           # 1 level: [x, y]
+	if not land.is_empty():
+		coords.get_child(0).text = str(land[0][0])
+		coords.get_child(1).text = str(land[0][1])
 
 var ORIGINX = 190
 var ORIGINY = 9999

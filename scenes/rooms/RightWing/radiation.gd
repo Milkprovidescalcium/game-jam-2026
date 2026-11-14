@@ -54,13 +54,13 @@ func _show_ok() -> void:
 func _try_fix() -> void:
 	if not is_broken:
 		return
-		var wanted := ""
-		for value in answer.solution:
-			wanted += str(value)
-			if code_input.text.strip_edges().replace(" ", "") == wanted:
-				repair()
-			else:
-				fail_attempt()   # costs health
-				status_label.text = "WRONG CODE"
-				hint_label.text = WRONG_HINT
-			code_input.clear()
+	var wanted := ""
+	for value in answer.solution:
+		wanted += str(value)
+	if code_input.text.strip_edges().replace(" ", "") == wanted:
+		repair()
+	else:
+		fail_attempt()
+		status_label.text = "WRONG CODE"
+		hint_label.text = WRONG_HINT
+	code_input.clear()

@@ -30,9 +30,12 @@ func _ready() -> void:
 func reset() -> void:
 	signal_lost = false
 	ground_is_ready = false
+	manual = {}
 
 func is_ground() -> bool:
 	return not multiplayer.is_server()
+	
+
 
 # =====================================================
 # CHAT: both players -> the other player

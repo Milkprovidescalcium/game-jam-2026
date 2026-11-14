@@ -34,6 +34,7 @@ mouse_filter = 2
 color = Color(0.15, 0.35, 0.2, 1)
 
 [node name="NameLabel" type="Label" parent="StatusPanel" unique_id=947876999]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 14.0
 offset_right = 366.0
@@ -42,6 +43,7 @@ theme_override_font_sizes/font_size = 30
 text = "VENTILATION"
 
 [node name="StatusLabel" type="Label" parent="StatusPanel" unique_id=423946139]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 66.0
 offset_right = 366.0
@@ -50,6 +52,7 @@ theme_override_font_sizes/font_size = 22
 text = "OK"
 
 [node name="HintLabel" type="Label" parent="StatusPanel" unique_id=1946837192]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 116.0
 offset_right = 366.0
