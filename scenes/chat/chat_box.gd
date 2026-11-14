@@ -9,7 +9,7 @@ func send(text: String) -> void:   # public, so ping buttons can use it too
 	if text.strip_edges() == "":
 		return
 	ShipNet.send_message(text)
-	_add("[color=gray]YOU:[/color] %s" % text)
+	_add("[color=black]YOU:[/color] [color=black]%s[/color]" % text)
 
 func _on_submit(text: String) -> void:
 	send(text)

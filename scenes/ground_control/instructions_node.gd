@@ -18,7 +18,7 @@ extends Node2D
 @onready var audio_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var paper_sound = preload("res://audio/sfx/picking up paper.mp3")
-var paper_putdown = preload("res://audio/sfx/paper put down.mp3")
+var paper_putdown = preload("res://audio/sfx/paper put down(1).mp3")
 
 
 	

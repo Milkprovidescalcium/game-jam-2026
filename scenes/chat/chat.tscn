@@ -12,6 +12,11 @@ script = ExtResource("1_1uvf6")
 [node name="MessageLog" type="RichTextLabel" parent="." unique_id=1429952987]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 text = "
 "
@@ -19,6 +24,7 @@ scroll_following = true
 
 [node name="Input" type="LineEdit" parent="." unique_id=900526223]
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 placeholder_text = "Type a message, press Enter"
 max_length = 80
 context_menu_enabled = false
