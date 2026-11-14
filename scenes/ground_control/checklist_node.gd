@@ -4,6 +4,8 @@ extends Node2D
 @onready var bottom_border: Sprite2D = $BottomOfCampForCheckListSprite
 @onready var top_border: Sprite2D = $TopOfCamForCheckListSprite
 
+signal checklist_up
+signal checklist_down
 
 func _ready() -> void:
 	#makes all the sprite's y value get like pivoted to the bottom instead of the middle
@@ -16,7 +18,7 @@ var ORIGINX = 190
 var ORIGINY = 3800
 
 var ONSCREENX = 190
-var ONSCREENY = 1500
+var ONSCREENY = 1800
 var TWEENSPEED = 0.25
 var onScreen = false;
 
@@ -27,6 +29,7 @@ func move_to_screen() -> void:
 	
 	onScreen = true;
 	print(sprite.position)
+	checklist_up.emit()
 	
 func move_down() -> void:
 	print("moved down")
@@ -34,6 +37,8 @@ func move_down() -> void:
 	tween.tween_property(sprite, "position", Vector2(ORIGINX, ORIGINY), TWEENSPEED)
 	
 	onScreen = false
+	checklist_down.emit()
+	
 
 var scroll_speed = 50
 
@@ -62,4 +67,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		move_down()
 
 func _on_check_list_button_pressed() -> void:
+	print("hey")
 	move_to_screen()

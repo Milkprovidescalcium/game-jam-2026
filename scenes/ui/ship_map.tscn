@@ -154,6 +154,7 @@ grow_vertical = 2
 
 [node name="InfoLabel" type="RichTextLabel" parent="." unique_id=1161636495]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 420.0
 offset_top = 210.0
