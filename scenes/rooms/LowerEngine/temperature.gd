@@ -26,9 +26,9 @@ func _ready() -> void:
 	code_input.text_submitted.connect(func(_text): _try_fix())
 	_show_ok()
 
-# A random 3-digit code; ground control sees it on their map
 func _generate_answer() -> Dictionary:
-	return {"code": "%d%d%d" % [rng.randi_range(0, 9), rng.randi_range(0, 9), rng.randi_range(0, 9)]}
+	var index := rng.randi_range(0, rules.size() - 1)
+	return {"level": index + 1, "solution": rules[index]}
 
 func _on_broken() -> void:
 	status_panel.color = BROKEN_COLOR
@@ -54,10 +54,13 @@ func _show_ok() -> void:
 func _try_fix() -> void:
 	if not is_broken:
 		return
-	if code_input.text.strip_edges() == answer.code:
-		repair()
-	else:
-		fail_attempt()   # costs health
-		status_label.text = "WRONG CODE"
-		hint_label.text = WRONG_HINT
-	code_input.clear()
+		var wanted := ""
+		for value in answer.solution:
+			wanted += str(value)
+			if code_input.text.strip_edges().replace(" ", "") == wanted:
+				repair()
+			else:
+				fail_attempt()   # costs health
+				status_label.text = "WRONG CODE"
+				hint_label.text = WRONG_HINT
+			code_input.clear()

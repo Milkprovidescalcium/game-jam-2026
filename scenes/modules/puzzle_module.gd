@@ -21,6 +21,8 @@ var is_open := false
 var answer: Dictionary = {}
 var rng := RandomNumberGenerator.new()
 
+
+
 func _ready() -> void:
 	add_to_group("puzzle")
 	hide()   # hidden puzzles ignore clicks but keep running
@@ -29,8 +31,12 @@ func _ready() -> void:
 		close_button.pressed.connect(close)
 
 # Called once by the GameManager at round start
-func setup(seed_value: int) -> void:
+var rules: Array = [] 
+
+# Called once by the GameManager at round start
+func setup(seed_value: int, room_rules: Array = []) -> void:
 	rng.seed = seed_value
+	rules = room_rules
 
 # ---- Showing / hiding (the Ship calls these) ----
 func open() -> void:
