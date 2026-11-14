@@ -9,6 +9,8 @@ func _ready() -> void:
 	Network.server_closed.connect(_on_server_closed)
 	if Network.is_online:
 		ShipNet.notify_ground_ready()   # tells the ship it can start the round
+		
+	print("ground control sees: ", Network.numbers)
 
 func _on_server_closed() -> void:
 	get_tree().change_scene_to_file(LOBBY_SCENE)

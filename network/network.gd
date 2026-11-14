@@ -23,6 +23,29 @@ func _ready() -> void:
 
 # ---------- Host / join / leave ----------
 
+
+# <------random seed ------>
+
+signal numbers_received(numbers: Array)
+
+var numbers: Array = []
+
+func generate_and_send(count: int, min_val: int, max_val: int) -> void:
+	if not multiplayer.is_server():
+		return
+	var generated: Array = []
+	for i in count:
+		generated.append(randi_range(min_val, max_val))
+	_receive_numbers.rpc(generated) #sends a signal across network
+
+@rpc("authority", "call_local", "reliable") #just configs the connection
+func _receive_numbers(new_numbers: Array) -> void:
+	numbers = new_numbers
+	numbers_received.emit(numbers)
+	
+
+# <------random seed -----/>
+
 func host() -> Error:
 	leave()   # close any old connection first
 	var peer := ENetMultiplayerPeer.new()
@@ -78,6 +101,7 @@ func _start_timeout() -> void:
 
 func _on_peer_connected(id: int) -> void:
 	player_connected.emit(id)
+
 
 func _on_peer_disconnected(id: int) -> void:
 	player_disconnected.emit(id)
