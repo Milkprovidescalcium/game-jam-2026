@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" uid="uid://djw0ru3aw4dwo" path="res://scenes/rooms/LeftWing/ventilation.gd" id="1_68oci"]
 [ext_resource type="Texture2D" uid="uid://btgifx5amcauj" path="res://art/rooms/VentilationPuzzle.jpg" id="2_art"]
+[ext_resource type="Script" uid="uid://bn62gmq5fwnt4" path="res://scenes/modules/puzzle_dial.gd" id="3_dial"]
+[ext_resource type="Texture2D" uid="uid://b3p2kys4ce4lu" path="res://screen.png" id="3_vqh7g"]
+[ext_resource type="FontFile" uid="uid://bmfi0t52rqb36" path="res://art/fonts/Just_Another_Hand/JustAnotherHand-Regular.ttf" id="4_g3w68"]
+[ext_resource type="Texture2D" uid="uid://bms560ljvhbiy" path="res://art/rooms/Knob.png" id="4_knob"]
 
 [node name="Ventilation" type="Node2D" unique_id=294214619]
 script = ExtResource("1_68oci")
 room_id = "left_wing"
 puzzle_name = "Ventilation"
+broken_hint = "Tell Ground Control how full the oxygen bar is. Turn the knobs to match their manual, then press REPAIR."
 
 [node name="Dimmer" type="ColorRect" parent="." unique_id=1199130909]
 offset_left = -1000.0
@@ -25,64 +30,151 @@ texture = ExtResource("2_art")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StatusPanel" type="ColorRect" parent="." unique_id=795425564]
+[node name="StatusPanel" type="TextureRect" parent="." unique_id=324091237]
 offset_left = 24.0
 offset_top = 90.0
 offset_right = 406.0
 offset_bottom = 384.0
 mouse_filter = 2
-color = Color(0.15, 0.35, 0.2, 1)
+texture = ExtResource("3_vqh7g")
+expand_mode = 1
 
 [node name="NameLabel" type="Label" parent="StatusPanel" unique_id=947876999]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 14.0
-offset_right = 366.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("4_g3w68")
 text = "VENTILATION"
+offset_left = 42.0
+offset_top = 14.0
+offset_right = 372.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 44
 
 [node name="StatusLabel" type="Label" parent="StatusPanel" unique_id=423946139]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 66.0
-offset_right = 366.0
-offset_bottom = 102.0
-theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("4_g3w68")
 text = "OK"
+offset_left = 42.0
+offset_top = 58.0
+offset_right = 372.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 34
 
 [node name="HintLabel" type="Label" parent="StatusPanel" unique_id=1946837192]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 116.0
-offset_right = 366.0
-offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("4_g3w68")
 text = "All systems nominal. Nothing to repair here."
 autowrap_mode = 3
+offset_left = 42.0
+offset_top = 98.0
+offset_right = 366.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 28
 
-[node name="CodeInput" type="LineEdit" parent="." unique_id=1497871144]
-offset_left = 436.0
-offset_top = 504.0
-offset_right = 786.0
-offset_bottom = 560.0
-theme_override_font_sizes/font_size = 26
-placeholder_text = "Repair code"
-alignment = 1
-max_length = 3
-context_menu_enabled = false
+[node name="Symptom" type="Control" parent="StatusPanel" unique_id=1816087198]
+anchors_preset = 0
+mouse_filter = 2
+offset_left = 42.0
+offset_top = 204.0
+offset_right = 372.0
+offset_bottom = 284.0
+
+[node name="Title" type="Label" parent="StatusPanel/Symptom" unique_id=642730241]
+layout_mode = 0
+text = "OXYGEN LEVEL"
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 320.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 28
+
+[node name="Bar" type="Control" parent="StatusPanel/Symptom" unique_id=799878127]
+anchors_preset = 0
+mouse_filter = 2
+offset_left = 0.0
+offset_top = 36.0
+offset_right = 320.0
+offset_bottom = 70.0
+
+[node name="Seg1" type="ColorRect" parent="StatusPanel/Symptom/Bar" unique_id=523729283]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 74.0
+offset_bottom = 34.0
+
+[node name="Seg2" type="ColorRect" parent="StatusPanel/Symptom/Bar" unique_id=616455894]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+offset_left = 80.0
+offset_top = 0.0
+offset_right = 154.0
+offset_bottom = 34.0
+
+[node name="Seg3" type="ColorRect" parent="StatusPanel/Symptom/Bar" unique_id=514743897]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+offset_left = 160.0
+offset_top = 0.0
+offset_right = 234.0
+offset_bottom = 34.0
+
+[node name="Seg4" type="ColorRect" parent="StatusPanel/Symptom/Bar" unique_id=1866425269]
+layout_mode = 0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+offset_left = 240.0
+offset_top = 0.0
+offset_right = 314.0
+offset_bottom = 34.0
+
+[node name="Knobs" type="Node2D" parent="." unique_id=2117909015]
+
+[node name="Knob1" type="TextureButton" parent="Knobs" unique_id=347094926]
+offset_left = 478.0
+offset_top = 275.0
+offset_right = 628.0
+offset_bottom = 425.0
+texture_normal = ExtResource("4_knob")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_dial")
+
+[node name="Knob2" type="TextureButton" parent="Knobs" unique_id=727763166]
+offset_left = 716.0
+offset_top = 275.0
+offset_right = 866.0
+offset_bottom = 425.0
+texture_normal = ExtResource("4_knob")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_dial")
+
+[node name="Knob3" type="TextureButton" parent="Knobs" unique_id=1122710673]
+offset_left = 941.0
+offset_top = 275.0
+offset_right = 1091.0
+offset_bottom = 425.0
+texture_normal = ExtResource("4_knob")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_dial")
 
 [node name="FixButton" type="Button" parent="." unique_id=203694312]
 offset_left = 800.0
 offset_top = 504.0
 offset_right = 956.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 20
 text = "REPAIR"
+theme_override_font_sizes/font_size = 32
 
 [node name="CloseButton" type="Button" parent="." unique_id=2146445860]
 offset_left = 970.0
 offset_top = 504.0
 offset_right = 1126.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 20
 text = "BACK"
+theme_override_font_sizes/font_size = 32

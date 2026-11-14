@@ -32,7 +32,7 @@ func start_game() -> void:
 	print("GAME STARTED")
 	if game_seed == 0:
 		game_seed = randi()
-		rng.seed = game_seed
+	rng.seed = game_seed
 	print("Round seed: ", game_seed)
 	_create_manual()
 	modules.clear()

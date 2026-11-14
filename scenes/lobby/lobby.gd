@@ -28,9 +28,9 @@ func _ready() -> void:
 
 func _on_host() -> void:
 	$JoinButton.disabled = false
-	var err := Network.host()
+	var err: Error = Network.host()
 	if err == OK:
-		var ips := Network.get_local_ips()
+		var ips: Array[String] = Network.get_local_ips()
 		if ips.is_empty():
 			$StatusLabel.text = "Hosting, but no network found - only this computer can join."
 		else:

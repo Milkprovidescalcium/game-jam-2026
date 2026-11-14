@@ -13,10 +13,10 @@ offset_left = 258.0
 offset_top = 355.0
 offset_right = 504.0
 offset_bottom = 426.0
-theme_override_font_sizes/font_size = 24
 text = "
 "
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 36
 
 [node name="HostButton" type="Button" parent="." unique_id=1154058873]
 layout_mode = 0
@@ -43,6 +43,7 @@ offset_left = 349.0
 offset_top = 278.0
 offset_right = 783.0
 offset_bottom = 348.0
+theme_override_font_sizes/font_size = 36
 
 [node name="OfflineButton" type="Button" parent="." unique_id=328996038]
 layout_mode = 0

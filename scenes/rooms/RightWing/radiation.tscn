@@ -2,11 +2,22 @@
 
 [ext_resource type="Script" uid="uid://h76y6jnccpip" path="res://scenes/rooms/RightWing/radiation.gd" id="1_0ctll"]
 [ext_resource type="Texture2D" uid="uid://da1c8c2p3si1v" path="res://art/rooms/Radiation Puzzle.jpg" id="2_art"]
+[ext_resource type="Texture2D" uid="uid://b3p2kys4ce4lu" path="res://screen.png" id="3_ahxxs"]
+[ext_resource type="FontFile" uid="uid://bmfi0t52rqb36" path="res://art/fonts/Just_Another_Hand/JustAnotherHand-Regular.ttf" id="4_rjp0r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idle"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_down"]
+bg_color = Color(0, 0, 0, 0.35)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(1, 1, 1, 0.22)
 
 [node name="Radiation" type="Node2D" unique_id=1892051468]
 script = ExtResource("1_0ctll")
 room_id = "right_wing"
 puzzle_name = "Radiation"
+broken_hint = "Tell Ground Control the radiation type. Press the colours in their manual's order, then press REPAIR."
 
 [node name="Dimmer" type="ColorRect" parent="." unique_id=1390703502]
 offset_left = -1000.0
@@ -25,61 +36,186 @@ texture = ExtResource("2_art")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StatusPanel" type="ColorRect" parent="." unique_id=1351527726]
+[node name="StatusPanel" type="TextureRect" parent="." unique_id=1274352797]
 offset_left = 24.0
 offset_top = 90.0
 offset_right = 406.0
 offset_bottom = 384.0
 mouse_filter = 2
-color = Color(0.15, 0.35, 0.2, 1)
+texture = ExtResource("3_ahxxs")
+expand_mode = 1
 
 [node name="NameLabel" type="Label" parent="StatusPanel" unique_id=1189709946]
-offset_left = 16.0
-offset_top = 14.0
-offset_right = 366.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 30
+layout_mode = 0
+theme_override_fonts/font = ExtResource("4_rjp0r")
 text = "RADIATION"
+offset_left = 42.0
+offset_top = 14.0
+offset_right = 372.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 44
 
 [node name="StatusLabel" type="Label" parent="StatusPanel" unique_id=224551738]
-offset_left = 16.0
-offset_top = 66.0
-offset_right = 366.0
-offset_bottom = 102.0
-theme_override_font_sizes/font_size = 22
+layout_mode = 0
+theme_override_fonts/font = ExtResource("4_rjp0r")
 text = "OK"
+offset_left = 42.0
+offset_top = 58.0
+offset_right = 372.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 34
 
 [node name="HintLabel" type="Label" parent="StatusPanel" unique_id=1295201396]
-offset_left = 16.0
-offset_top = 116.0
-offset_right = 366.0
-offset_bottom = 280.0
+layout_mode = 0
+theme_override_fonts/font = ExtResource("4_rjp0r")
 text = "All systems nominal. Nothing to repair here."
 autowrap_mode = 3
+offset_left = 42.0
+offset_top = 98.0
+offset_right = 366.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 28
 
-[node name="CodeInput" type="LineEdit" parent="." unique_id=561060838]
+[node name="Symptom" type="Control" parent="StatusPanel" unique_id=1894062152]
+anchors_preset = 0
+mouse_filter = 2
+offset_left = 42.0
+offset_top = 200.0
+offset_right = 372.0
+offset_bottom = 286.0
+
+[node name="Title" type="Label" parent="StatusPanel/Symptom" unique_id=1167621639]
+layout_mode = 0
+theme_override_fonts/font = ExtResource("4_rjp0r")
+text = "RADIATION TYPE"
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 320.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 28
+
+[node name="TypeLabel" type="Label" parent="StatusPanel/Symptom" unique_id=470827150]
+layout_mode = 0
+theme_override_fonts/font = ExtResource("4_rjp0r")
+text = "ALPHA"
+offset_left = 0.0
+offset_top = 28.0
+offset_right = 320.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 52
+
+[node name="Buttons" type="Node2D" parent="." unique_id=1801748852]
+
+[node name="Red" type="Button" parent="Buttons" unique_id=1846667133]
+offset_left = 571.0
+offset_top = 202.0
+offset_right = 789.0
+offset_bottom = 316.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_idle")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_down")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_idle")
+
+[node name="Blue" type="Button" parent="Buttons" unique_id=510664858]
+offset_left = 794.0
+offset_top = 202.0
+offset_right = 999.0
+offset_bottom = 316.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_idle")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_down")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_idle")
+
+[node name="Green" type="Button" parent="Buttons" unique_id=1189450433]
+offset_left = 571.0
+offset_top = 320.0
+offset_right = 789.0
+offset_bottom = 452.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_idle")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_down")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_idle")
+
+[node name="Yellow" type="Button" parent="Buttons" unique_id=1894638472]
+offset_left = 794.0
+offset_top = 320.0
+offset_right = 999.0
+offset_bottom = 452.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_idle")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_down")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_idle")
+
+[node name="SequenceFrame" type="ColorRect" parent="." unique_id=934411673]
 offset_left = 436.0
+offset_top = 504.0
+offset_right = 676.0
+offset_bottom = 560.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Sequence" type="Node2D" parent="." unique_id=492718981]
+
+[node name="Slot1" type="TextureRect" parent="Sequence" unique_id=811867347]
+offset_left = 442.0
+offset_top = 508.0
+offset_right = 490.0
+offset_bottom = 556.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="TextureRect" parent="Sequence" unique_id=790377927]
+offset_left = 500.0
+offset_top = 508.0
+offset_right = 548.0
+offset_bottom = 556.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="TextureRect" parent="Sequence" unique_id=351917617]
+offset_left = 558.0
+offset_top = 508.0
+offset_right = 606.0
+offset_bottom = 556.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="TextureRect" parent="Sequence" unique_id=287222683]
+offset_left = 616.0
+offset_top = 508.0
+offset_right = 664.0
+offset_bottom = 556.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClearButton" type="Button" parent="." unique_id=1283236917]
+offset_left = 686.0
 offset_top = 504.0
 offset_right = 786.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 26
-placeholder_text = "Repair code"
-alignment = 1
-max_length = 3
-context_menu_enabled = false
+text = "CLEAR"
+theme_override_font_sizes/font_size = 32
 
 [node name="FixButton" type="Button" parent="." unique_id=180521324]
 offset_left = 800.0
 offset_top = 504.0
 offset_right = 956.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 20
 text = "REPAIR"
+theme_override_font_sizes/font_size = 32
 
 [node name="CloseButton" type="Button" parent="." unique_id=1003263729]
 offset_left = 970.0
 offset_top = 504.0
 offset_right = 1126.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 20
 text = "BACK"
+theme_override_font_sizes/font_size = 32
