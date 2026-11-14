@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://dw7uko8alfjfs"]
 
 [ext_resource type="Script" uid="uid://dl5dxtpllp5h1" path="res://scenes/rooms/Cockpit/dropping_parts.gd" id="1_npjp4"]
-[ext_resource type="Texture2D" uid="uid://c2xhukpg13wib" path="res://art/rooms/temperaturePuzzle.png" id="2_art"]
+[ext_resource type="Texture2D" uid="uid://dfk4momyjkvs6" path="res://scenes/lobby/LandingPuzzle.png" id="2_art"]
+[ext_resource type="Texture2D" uid="uid://b3p2kys4ce4lu" path="res://screen.png" id="3_51bax"]
+[ext_resource type="FontFile" uid="uid://bmfi0t52rqb36" path="res://art/fonts/Just_Another_Hand/JustAnotherHand-Regular.ttf" id="3_lr4yw"]
 
 [node name="DroppingParts" type="Node2D" unique_id=1258382803]
 script = ExtResource("1_npjp4")
 room_id = "cockpit"
-puzzle_name = "Dropping Parts"
+puzzle_name = "Landing Control"
+broken_hint = "Ask Ground Control for the landing coordinates. Put N in the left box and E in the right box, then press REPAIR."
 
 [node name="Dimmer" type="ColorRect" parent="." unique_id=355808012]
 offset_left = -1000.0
@@ -25,64 +28,81 @@ texture = ExtResource("2_art")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StatusPanel" type="ColorRect" parent="." unique_id=1099999852]
-offset_left = 24.0
+[node name="StatusPanel" type="TextureRect" parent="." unique_id=514236047]
 offset_top = 90.0
 offset_right = 406.0
 offset_bottom = 384.0
 mouse_filter = 2
-color = Color(0.15, 0.35, 0.2, 1)
+texture = ExtResource("3_51bax")
+expand_mode = 1
 
 [node name="NameLabel" type="Label" parent="StatusPanel" unique_id=183574150]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 14.0
-offset_right = 366.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 30
-text = "DROPPING PARTS"
+theme_override_fonts/font = ExtResource("3_lr4yw")
+text = "LANDING CONTROL"
+offset_left = 55.0
+offset_top = 18.0
+offset_right = 396.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 44
 
 [node name="StatusLabel" type="Label" parent="StatusPanel" unique_id=456906281]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 66.0
-offset_right = 366.0
-offset_bottom = 102.0
-theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("3_lr4yw")
 text = "OK"
+offset_left = 55.0
+offset_top = 62.0
+offset_right = 396.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 34
 
 [node name="HintLabel" type="Label" parent="StatusPanel" unique_id=1179144365]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 116.0
-offset_right = 366.0
-offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("3_lr4yw")
 text = "All systems nominal. Nothing to repair here."
 autowrap_mode = 3
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 390.0
+offset_bottom = 270.0
+theme_override_font_sizes/font_size = 28
 
-[node name="CodeInput" type="LineEdit" parent="." unique_id=1664104406]
-offset_left = 436.0
-offset_top = 504.0
-offset_right = 786.0
-offset_bottom = 560.0
-theme_override_font_sizes/font_size = 26
-placeholder_text = "Repair code"
+[node name="NorthInput" type="SpinBox" parent="." unique_id=1772286690]
+offset_left = 507.0
+offset_top = 323.0
+offset_right = 751.0
+offset_bottom = 417.0
+theme_override_constants/field_and_buttons_separation = 1
+min_value = 100.0
+max_value = 275.0
+value = 100.0
 alignment = 1
-max_length = 3
-context_menu_enabled = false
+prefix = "N"
+
+[node name="EastInput" type="SpinBox" parent="." unique_id=659106038]
+offset_left = 793.0
+offset_top = 323.0
+offset_right = 1068.0
+offset_bottom = 417.0
+theme_override_constants/field_and_buttons_separation = 1
+min_value = 100.0
+max_value = 275.0
+value = 100.0
+alignment = 1
+prefix = "E"
 
 [node name="FixButton" type="Button" parent="." unique_id=173721998]
 offset_left = 800.0
 offset_top = 504.0
 offset_right = 956.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 20
 text = "REPAIR"
+theme_override_font_sizes/font_size = 32
 
 [node name="CloseButton" type="Button" parent="." unique_id=2142992638]
 offset_left = 970.0
 offset_top = 504.0
 offset_right = 1126.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 20
 text = "BACK"
+theme_override_font_sizes/font_size = 32

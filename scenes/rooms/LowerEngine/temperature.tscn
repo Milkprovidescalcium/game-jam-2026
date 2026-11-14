@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://inqmms5yet8v"]
 
 [ext_resource type="Script" uid="uid://c42f80aq7fhon" path="res://scenes/rooms/LowerEngine/temperature.gd" id="1_471k6"]
-[ext_resource type="Texture2D" uid="uid://dfk4momyjkvs6" path="res://art/rooms/temperaturePuzzle.png" id="2_art"]
+[ext_resource type="Texture2D" uid="uid://c2xhukpg13wib" path="res://art/rooms/temperaturePuzzle.png" id="2_art"]
+[ext_resource type="Script" uid="uid://bn62gmq5fwnt4" path="res://scenes/modules/puzzle_dial.gd" id="3_dial"]
+[ext_resource type="Texture2D" uid="uid://b3p2kys4ce4lu" path="res://screen.png" id="3_tvhy5"]
+[ext_resource type="FontFile" uid="uid://bmfi0t52rqb36" path="res://art/fonts/Just_Another_Hand/JustAnotherHand-Regular.ttf" id="4_pidyn"]
+[ext_resource type="Texture2D" uid="uid://oosjtdbwh2la" path="res://art/rooms/UpTempSwitch.jpg" id="4_switch"]
 
 [node name="Temperature" type="Node2D" unique_id=1785828127]
 script = ExtResource("1_471k6")
 room_id = "lower_engine"
 puzzle_name = "Temperature"
+broken_hint = "Tell Ground Control how high the thermometer is. Flip the switches to match their manual, then press REPAIR."
 
 [node name="Dimmer" type="ColorRect" parent="." unique_id=320410946]
 offset_left = -1000.0
@@ -25,61 +30,177 @@ texture = ExtResource("2_art")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="StatusPanel" type="ColorRect" parent="." unique_id=255555737]
+[node name="StatusPanel" type="TextureRect" parent="." unique_id=1583320675]
 offset_left = 24.0
 offset_top = 90.0
 offset_right = 406.0
 offset_bottom = 384.0
 mouse_filter = 2
-color = Color(0.15, 0.35, 0.2, 1)
+texture = ExtResource("3_tvhy5")
+expand_mode = 1
 
 [node name="NameLabel" type="Label" parent="StatusPanel" unique_id=1250797845]
-offset_left = 16.0
-offset_top = 14.0
-offset_right = 366.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 30
+layout_mode = 0
+theme_override_fonts/font = ExtResource("4_pidyn")
 text = "TEMPERATURE"
+offset_left = 41.0
+offset_top = 14.0
+offset_right = 372.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 44
 
 [node name="StatusLabel" type="Label" parent="StatusPanel" unique_id=1863673106]
-offset_left = 16.0
-offset_top = 66.0
-offset_right = 366.0
-offset_bottom = 102.0
-theme_override_font_sizes/font_size = 22
+layout_mode = 0
+theme_override_fonts/font = ExtResource("4_pidyn")
 text = "OK"
+offset_left = 41.0
+offset_top = 58.0
+offset_right = 290.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 34
 
 [node name="HintLabel" type="Label" parent="StatusPanel" unique_id=579499921]
-offset_left = 16.0
-offset_top = 116.0
-offset_right = 366.0
-offset_bottom = 280.0
+layout_mode = 0
+theme_override_fonts/font = ExtResource("4_pidyn")
 text = "All systems nominal. Nothing to repair here."
 autowrap_mode = 3
+offset_left = 41.0
+offset_top = 98.0
+offset_right = 286.0
+offset_bottom = 284.0
+theme_override_font_sizes/font_size = 28
 
-[node name="CodeInput" type="LineEdit" parent="." unique_id=302142728]
-offset_left = 436.0
-offset_top = 504.0
-offset_right = 786.0
-offset_bottom = 560.0
-theme_override_font_sizes/font_size = 26
-placeholder_text = "Repair code"
-alignment = 1
-max_length = 3
-context_menu_enabled = false
+[node name="Symptom" type="Control" parent="StatusPanel" unique_id=2146645364]
+anchors_preset = 0
+offset_left = 296.0
+offset_top = 108.0
+offset_right = 366.0
+offset_bottom = 282.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="StatusPanel/Symptom" unique_id=1298069806]
+layout_mode = 0
+text = "TEMP"
+horizontal_alignment = 1
+offset_left = 0.0
+offset_top = -6.0
+offset_right = 70.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 28
+
+[node name="Thermometer" type="Control" parent="StatusPanel/Symptom" unique_id=1412827761]
+anchors_preset = 0
+offset_left = 15.0
+offset_top = 28.0
+offset_right = 55.0
+offset_bottom = 172.0
+mouse_filter = 2
+
+[node name="Seg1" type="ColorRect" parent="StatusPanel/Symptom/Thermometer" unique_id=610694214]
+layout_mode = 0
+offset_top = 108.0
+offset_right = 40.0
+offset_bottom = 140.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="Seg2" type="ColorRect" parent="StatusPanel/Symptom/Thermometer" unique_id=412397592]
+layout_mode = 0
+offset_top = 72.0
+offset_right = 40.0
+offset_bottom = 104.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="Seg3" type="ColorRect" parent="StatusPanel/Symptom/Thermometer" unique_id=1293766472]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 40.0
+offset_bottom = 68.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="Seg4" type="ColorRect" parent="StatusPanel/Symptom/Thermometer" unique_id=1454311809]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="Switches" type="Node2D" parent="." unique_id=1519745620]
+
+[node name="Switch1" type="TextureButton" parent="Switches" unique_id=1175072793]
+offset_left = 468.0
+offset_top = 235.0
+offset_right = 544.0
+offset_bottom = 383.0
+texture_normal = ExtResource("4_switch")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_dial")
+choices = 2
+step_degrees = 180.0
+
+[node name="Switch2" type="TextureButton" parent="Switches" unique_id=105210123]
+offset_left = 593.0
+offset_top = 235.0
+offset_right = 669.0
+offset_bottom = 383.0
+texture_normal = ExtResource("4_switch")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_dial")
+choices = 2
+step_degrees = 180.0
+
+[node name="Switch3" type="TextureButton" parent="Switches" unique_id=1927763782]
+offset_left = 733.0
+offset_top = 235.0
+offset_right = 809.0
+offset_bottom = 383.0
+texture_normal = ExtResource("4_switch")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_dial")
+choices = 2
+step_degrees = 180.0
+
+[node name="Switch4" type="TextureButton" parent="Switches" unique_id=701167581]
+offset_left = 876.0
+offset_top = 235.0
+offset_right = 952.0
+offset_bottom = 383.0
+texture_normal = ExtResource("4_switch")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_dial")
+choices = 2
+step_degrees = 180.0
+
+[node name="Switch5" type="TextureButton" parent="Switches" unique_id=160883825]
+offset_left = 1012.0
+offset_top = 235.0
+offset_right = 1088.0
+offset_bottom = 383.0
+texture_normal = ExtResource("4_switch")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_dial")
+choices = 2
+step_degrees = 180.0
 
 [node name="FixButton" type="Button" parent="." unique_id=885310972]
 offset_left = 800.0
 offset_top = 504.0
 offset_right = 956.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 20
 text = "REPAIR"
+theme_override_font_sizes/font_size = 32
 
 [node name="CloseButton" type="Button" parent="." unique_id=2021583681]
 offset_left = 970.0
 offset_top = 504.0
 offset_right = 1126.0
 offset_bottom = 560.0
-theme_override_font_sizes/font_size = 20
 text = "BACK"
+theme_override_font_sizes/font_size = 32

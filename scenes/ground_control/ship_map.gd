@@ -23,6 +23,7 @@ func _ready() -> void:
 		var label := rooms[id].get_node_or_null("Label") as Label
 		if label:
 			label.text = id.replace("_", " ").to_upper()
+			label.add_theme_font_size_override("font_size", 26)   # fits "LOWER ENGINE" in the box
 			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	marker.z_index = 1   # draw the player on top of every room
