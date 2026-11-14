@@ -24,6 +24,11 @@ var ground_is_ready := false       # ship side: ground control has loaded its sc
 func _ready() -> void:
 	multiplayer.peer_disconnected.connect(func(_id): ground_is_ready = false)
 
+# Back to a clean slate; the lobby calls this before every new game
+func reset() -> void:
+	signal_lost = false
+	ground_is_ready = false
+
 func is_ground() -> bool:
 	return not multiplayer.is_server()
 

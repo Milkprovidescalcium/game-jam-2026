@@ -10,9 +10,13 @@ signal server_closed
 const PORT := 7777
 const MAX_CLIENTS := 1          # just ground control
 const CONNECT_TIMEOUT := 5.0    # seconds before giving up on joining
+const PEER_TIMEOUT_MS := 3000   # a player who crashes / loses wifi counts as gone after ~3-6 s
+const LOBBY_SCENE := "res://scenes/lobby/lobby.tscn"
 
 var is_online := false
+var last_message := ""          # why the last game ended; the lobby shows it once
 var _connecting := false
+var _join_attempt := 0          # so an old join timeout can't cancel a newer attempt
 
 func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_peer_connected)
@@ -21,8 +25,11 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(_on_connection_failed)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
-# ---------- Host / join / leave ----------
-
+func _notification(what: int) -> void:
+	# Closing the window: say goodbye first so the other player finds out
+	# straight away instead of waiting for a timeout.
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		leave()
 
 # <------random seed ------>
 
@@ -42,9 +49,10 @@ func generate_and_send(count: int, min_val: int, max_val: int) -> void:
 func _receive_numbers(new_numbers: Array) -> void:
 	numbers = new_numbers
 	numbers_received.emit(numbers)
-	
 
 # <------random seed -----/>
+
+# ---------- Host / join / leave ----------
 
 func host() -> Error:
 	leave()   # close any old connection first
@@ -59,6 +67,8 @@ func host() -> Error:
 
 func join(ip: String) -> Error:
 	ip = ip.strip_edges()
+	if ip.to_lower() == "localhost":
+		ip = "127.0.0.1"
 	if not ip.is_valid_ip_address():
 		push_warning("Not a valid IP: %s" % ip)
 		return ERR_INVALID_PARAMETER
@@ -76,32 +86,70 @@ func join(ip: String) -> Error:
 
 func leave() -> void:
 	_connecting = false
+	_join_attempt += 1   # cancels any join timeout that is still counting
 	if multiplayer.multiplayer_peer and not multiplayer.multiplayer_peer is OfflineMultiplayerPeer:
 		multiplayer.multiplayer_peer.close()
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	is_online = false
+
+## The game is over because someone left: drop the connection and send this
+## player back to the lobby, which shows `message`.
+func end_session(message: String) -> void:
+	last_message = message
+	_end_session_now.call_deferred()   # after Godot finishes handling the disconnect
+
+func _end_session_now() -> void:
+	leave()
+	get_tree().change_scene_to_file(LOBBY_SCENE)
 
 # ---------- Helpers ----------
 
 func is_ship() -> bool:
 	return multiplayer.is_server()   # host = player 1
 
-func get_local_ip() -> String:
+## Every address on this computer that another computer on the same network
+## could join with, most likely one first (home wifi / LAN before VPNs and
+## virtual adapters such as WSL or Docker).
+func get_local_ips() -> Array[String]:
+	var home: Array[String] = []
+	var other: Array[String] = []
 	for ip in IP.get_local_addresses():
-		if ip.begins_with("192.168.") or ip.begins_with("10.") or ip.begins_with("172."):
-			return ip
-	return "127.0.0.1"
+		if ip.begins_with("192.168."):
+			if not ip in home:
+				home.append(ip)
+		elif ip.begins_with("10.") or _is_private_172(ip):
+			if not ip in other:
+				other.append(ip)
+	return home + other
+
+func get_local_ip() -> String:
+	var ips := get_local_ips()
+	return ips[0] if not ips.is_empty() else "127.0.0.1"
+
+func _is_private_172(ip: String) -> bool:
+	var parts := ip.split(".")
+	return parts.size() == 4 and parts[0] == "172" and int(parts[1]) >= 16 and int(parts[1]) <= 31
 
 func _start_timeout() -> void:
+	var attempt := _join_attempt
 	await get_tree().create_timer(CONNECT_TIMEOUT).timeout
-	if _connecting:   # still not connected
+	if _connecting and attempt == _join_attempt:   # this attempt is still not connected
 		_on_connection_failed()
+
+# Notice a crashed / unplugged player after a few seconds instead of ~30
+func _use_short_timeout(peer_id: int) -> void:
+	var enet := multiplayer.multiplayer_peer as ENetMultiplayerPeer
+	if enet == null:
+		return
+	var peer := enet.get_peer(peer_id)
+	if peer:
+		peer.set_timeout(8, PEER_TIMEOUT_MS, PEER_TIMEOUT_MS * 2)
 
 # ---------- Signal handlers ----------
 
 func _on_peer_connected(id: int) -> void:
+	_use_short_timeout(id)
 	player_connected.emit(id)
-
 
 func _on_peer_disconnected(id: int) -> void:
 	player_disconnected.emit(id)
