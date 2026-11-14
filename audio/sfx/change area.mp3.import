@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://e6gdryucx5q5"
+path="res://.godot/imported/change area.mp3-d1c18e6e72ebebad415f0e83c384a0a1.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/change area.mp3"
+dest_files=["res://.godot/imported/change area.mp3-d1c18e6e72ebebad415f0e83c384a0a1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

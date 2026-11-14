@@ -13,7 +13,7 @@ rotation = 4.712389
 scale = Vector2(0.06611976, 0.06025007)
 texture = ExtResource("2_xomhx")
 
-[node name="GoToBody" type="Button" parent="GoToBody" unique_id=1271631219]
+[node name="GoToBody" type="Button" parent="GoToBody" unique_id=1271631219 groups=["button"]]
 offset_left = -771.32666
 offset_top = -879.66675
 offset_right = 827.688
@@ -31,10 +31,10 @@ texture = ExtResource("3_xomhx")
 [node name="PuzzleButton" type="Button" parent="UI" unique_id=1601776468]
 anchors_preset = -1
 anchor_left = -0.006076389
-offset_left = 518.0
-offset_top = 304.0
-offset_right = 638.0
-offset_bottom = 436.0
+offset_left = 526.0
+offset_top = 373.0
+offset_right = 646.0
+offset_bottom = 505.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Puzzle" type="Node2D" parent="." unique_id=880530638]

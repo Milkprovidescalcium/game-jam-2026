@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://df4smqd64w6i4"
+path="res://.godot/imported/paper put down(2).mp3-783ce4b0458d92f591f00d50d171ec39.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/paper put down(2).mp3"
+dest_files=["res://.godot/imported/paper put down(2).mp3-783ce4b0458d92f591f00d50d171ec39.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

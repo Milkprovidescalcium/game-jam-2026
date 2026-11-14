@@ -1,14 +1,16 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	add_child(audio_player)
+	audio_player.stream = button_sound
 
+@onready var audio_player: AudioStreamPlayer = AudioStreamPlayer.new()
+var button_sound = preload("res://audio/sfx/change area.mp3")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func play_sound() -> void:
+	audio_player.stream = button_sound
+	audio_player.play(0.2) #idk why its 0.2 just dont change
 
 func move_scene(room_id: String) -> void:
 	# Finds your main Ship node and calls your backend function!
@@ -20,5 +22,6 @@ func move_scene(room_id: String) -> void:
 	
 	
 func _on_go_to_body_pressed() -> void:
+	play_sound()
 	move_scene("body")
 	pass # Replace with function body.

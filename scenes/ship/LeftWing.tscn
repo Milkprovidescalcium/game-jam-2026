@@ -28,13 +28,13 @@ texture = ExtResource("3_1cbtj")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=378982482]
 
-[node name="PuzzleButton" type="Button" parent="UI" unique_id=513651904]
+[node name="PuzzleButton" type="Button" parent="UI" unique_id=513651904 groups=["button"]]
 anchors_preset = -1
 anchor_left = -0.006076389
-offset_left = 518.0
-offset_top = 304.0
-offset_right = 638.0
-offset_bottom = 436.0
+offset_left = 452.0
+offset_top = 251.0
+offset_right = 572.0
+offset_bottom = 383.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Puzzle" type="Node2D" parent="." unique_id=1617619877]

@@ -18,10 +18,8 @@ extends Node2D
 @onready var audio_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var paper_sound = preload("res://audio/sfx/picking up paper.mp3")
-var paper_putdown = preload("res://audio/sfx/paper put down(1).mp3")
+var paper_putdown = preload("res://audio/sfx/paper put down(2).mp3")
 
-
-	
 
 func play_paper_sound() -> void:
 	audio_player.stream = paper_sound

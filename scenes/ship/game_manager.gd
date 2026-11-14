@@ -2,7 +2,7 @@ extends Node
 
 @export var round_time := 300.0            # 5 minutes
 @export var max_health := 100.0
-@export var drain_per_broken := 1.5        # health lost per second, per broken system
+@export var drain_per_broken := 1        # health lost per second, per broken system
 @export var fail_penalty := 10.0           # health lost for a wrong answer
 @export var first_break_delay := 8.0       # seconds before the first breakdown
 @export var break_interval_start := 30.0   # gap between breakdowns at the start

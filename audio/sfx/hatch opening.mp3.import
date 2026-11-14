@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhdxt1dom3ryl"
+path="res://.godot/imported/hatch opening.mp3-2dc672b59daab1e14676245b47e120a7.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/hatch opening.mp3"
+dest_files=["res://.godot/imported/hatch opening.mp3-2dc672b59daab1e14676245b47e120a7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
