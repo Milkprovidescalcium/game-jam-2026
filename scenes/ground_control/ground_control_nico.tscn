@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://cnkp1d1wsq1ya"]
 
 [ext_resource type="Script" uid="uid://dstmvuc8nfgdb" path="res://scenes/ground_control/ground_control_nico.gd" id="1_qawio"]
+[ext_resource type="PackedScene" uid="uid://bjj87363a6sjp" path="res://scenes/ui/timer_label.tscn" id="2_1epie"]
 [ext_resource type="Texture2D" uid="uid://b8a5yrxplyp2k" path="res://art/rooms/ground_control.jpg" id="2_qn33s"]
+[ext_resource type="PackedScene" uid="uid://gsq420gyuwff" path="res://scenes/ui/ship_map.tscn" id="3_iw7wk"]
 [ext_resource type="Script" uid="uid://dctssf1qfeu3s" path="res://scenes/ground_control/background.gd" id="3_sdfxw"]
 [ext_resource type="Script" uid="uid://ctvnbdatwtis4" path="res://scenes/ground_control/instructions_node.gd" id="4_f7g4o"]
+[ext_resource type="PackedScene" uid="uid://my762trhbs4g" path="res://scenes/chat/chat.tscn" id="4_u6d5m"]
 [ext_resource type="Texture2D" uid="uid://7m7igas4to5t" path="res://themes/icon.svg" id="5_1epie"]
+[ext_resource type="PackedScene" uid="uid://bnu5axbkt0ikn" path="res://scenes/ui/healthbar.tscn" id="5_k1cpu"]
 [ext_resource type="Texture2D" uid="uid://bkwhyxgasqn8" path="res://art/rooms/placeholder.jpeg" id="6_iw7wk"]
 [ext_resource type="Texture2D" uid="uid://cwl55g8086cqy" path="res://icon.svg" id="7_u6d5m"]
 [ext_resource type="Script" uid="uid://c2mvncn7x02px" path="res://scenes/ground_control/checklist_node.gd" id="8_k1cpu"]
@@ -65,6 +69,20 @@ offset_left = -269.0
 offset_top = 734.0
 offset_right = -139.0
 offset_bottom = 914.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="InstructionsNode" unique_id=600930227]
+
+[node name="TimerLabel" parent="InstructionsNode/CanvasLayer" unique_id=52369526 instance=ExtResource("2_1epie")]
+
+[node name="ShipMap" parent="InstructionsNode/CanvasLayer" unique_id=1489874199 instance=ExtResource("3_iw7wk")]
+
+[node name="ChatBox" parent="InstructionsNode/CanvasLayer" unique_id=1585531339 instance=ExtResource("4_u6d5m")]
+offset_left = 3.0
+offset_top = 398.0
+offset_right = 403.0
+offset_bottom = 648.0
+
+[node name="Healthbar" parent="InstructionsNode/CanvasLayer" unique_id=946722934 instance=ExtResource("5_k1cpu")]
 
 [node name="TableNode" type="Node2D" parent="." unique_id=1693905726]
 
@@ -142,6 +160,8 @@ texture = ExtResource("12_13a2u")
 [connection signal="pressed" from="InstructionsNode/ThermalButton" to="InstructionsNode" method="_on_thermal_button_pressed"]
 [connection signal="pressed" from="InstructionsNode/RadiationButton" to="InstructionsNode" method="_on_radiation_button_pressed"]
 [connection signal="pressed" from="InstructionsNode/OxygenButton" to="InstructionsNode" method="_on_oxygen_button_pressed"]
+[connection signal="check_list_down" from="TableNode/ChecklistNode" to="InstructionsNode" method="_on_checklist_node_check_list_down"]
+[connection signal="check_list_up" from="TableNode/ChecklistNode" to="InstructionsNode" method="_on_checklist_node_check_list_up"]
 [connection signal="pressed" from="TableNode/ChecklistNode/CheckListSprite/CheckListButton" to="." method="_on_check_list_button_pressed"]
 [connection signal="pressed" from="TableNode/ChecklistNode/CheckListSprite/CheckListButton" to="TableNode/ChecklistNode" method="_on_check_list_button_pressed"]
 [connection signal="pressed" from="TableNode/PapersNode/PapersSprite/PapersButton" to="InstructionsNode" method="_on_button_pressed"]

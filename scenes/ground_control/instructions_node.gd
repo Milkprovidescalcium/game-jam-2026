@@ -4,6 +4,9 @@ extends Node2D
 @onready var bottom_border: Sprite2D = $BottomOfCamSprite
 @onready var top_border: Sprite2D = $TopOfCamSprite
 
+@onready var canvas: CanvasLayer = $CanvasLayer
+@onready var timer_label: Control = $CanvasLayer/TimerLabel
+
 
 func _ready() -> void:
 	#makes all the sprite's y value get like pivoted to the bottom instead of the middle
@@ -11,12 +14,14 @@ func _ready() -> void:
 	bottom_border.offset.y = -bottom_border.texture.get_height() / 2.0
 	top_border.offset.y = -top_border.texture.get_height() / 2.0
 	
+	timer_label.add_theme_color_override("font_color", Color.BLACK)
+	
 
 var ORIGINX = 190
 var ORIGINY = 3800
 
 var ONSCREENX = 190
-var ONSCREENY = 1500
+var ONSCREENY = 1800
 var TWEENSPEED = 0.25
 var onScreen = false;
 
@@ -27,13 +32,17 @@ func move_to_screen() -> void:
 	tween.tween_property(sprite, "position", Vector2(ONSCREENX, ONSCREENY), TWEENSPEED)
 	
 	onScreen = true;
+	canvas.hide()
 	print(sprite.position)
+	
 func move_down() -> void:
 	print("moved down")
 	var tween := create_tween()
 	tween.tween_property(sprite, "position", Vector2(ORIGINX, ORIGINY), TWEENSPEED)
 	
 	onScreen = false
+	canvas.show()
+	
 
 var scroll_speed = 50
 func _sprite_top() -> float: #calculates the top of the sprite
@@ -106,4 +115,14 @@ func _on_radiation_button_pressed() -> void:
 		sprite.offset.y = -sprite.texture.get_height() / 2.0
 		move_to_screen()
 	
+	pass # Replace with function body.
+
+
+func _on_checklist_node_check_list_down() -> void:
+	canvas.show()
+	pass # Replace with function body.
+
+
+func _on_checklist_node_check_list_up() -> void:
+	canvas.hide()
 	pass # Replace with function body.
