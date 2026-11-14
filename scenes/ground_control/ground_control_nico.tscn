@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c2mvncn7x02px" path="res://scenes/ground_control/checklist_node.gd" id="8_k1cpu"]
 [ext_resource type="Texture2D" uid="uid://bvx0ccyq3iray" path="res://art/rooms/Checklist.jpg" id="9_07xlo"]
 [ext_resource type="Texture2D" uid="uid://bu6u7wm176c7t" path="res://art/rooms/placeholder3.jpeg" id="10_akgbx"]
+[ext_resource type="PackedScene" uid="uid://dd4g6l0fsouf8" path="res://scenes/ui/WinScreen.tscn" id="11_akgbx"]
 [ext_resource type="Script" uid="uid://ctl0lw23yfo4v" path="res://scenes/ground_control/papers_node.gd" id="11_e6grv"]
 [ext_resource type="Texture2D" uid="uid://bfjvjif1547ei" path="res://art/rooms/Temperature Guide.jpg" id="12_13a2u"]
 [ext_resource type="Texture2D" uid="uid://bms560ljvhbiy" path="res://art/rooms/Knob.png" id="13_u6d5m"]
@@ -82,6 +83,8 @@ offset_right = 403.0
 offset_bottom = 648.0
 
 [node name="Healthbar" parent="InstructionsNode/CanvasLayer" unique_id=946722934 instance=ExtResource("5_k1cpu")]
+
+[node name="WinScreen" parent="InstructionsNode/CanvasLayer" unique_id=1783585130 instance=ExtResource("11_akgbx")]
 
 [node name="PlaceHolder" type="Sprite2D" parent="InstructionsNode" unique_id=1005867828]
 z_index = 10

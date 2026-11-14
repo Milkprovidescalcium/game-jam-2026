@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dd4g6l0fsouf8"]
+
+[ext_resource type="Script" uid="uid://cdk13g2par5o7" path="res://scenes/ui/texture_rect.gd" id="1_iywrl"]
+
+[node name="WinScreen" type="Control" unique_id=1783585130]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1417526840]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 648.0
+expand_mode = 1
+script = ExtResource("1_iywrl")
