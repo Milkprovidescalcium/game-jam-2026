@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="game_jam_2026"
+run/main_scene="uid://cfc8kd6g8anax"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Network="*uid://dtfsea6b1oj6b"
 ShipNet="*uid://dbtx8usny7byn"
+Network="*uid://dtfsea6b1oj6b"
 
 [display]
 

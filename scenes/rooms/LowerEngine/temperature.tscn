@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://inqmms5yet8v"]
+
+[ext_resource type="Script" uid="uid://c42f80aq7fhon" path="res://scenes/rooms/LowerEngine/temperature.gd" id="1_471k6"]
+
+[node name="Temperature" type="Node2D" unique_id=1785828127]
+script = ExtResource("1_471k6")
+room_id = "lower_engine"
+puzzle_name = "Radiation"
+
+[node name="Background" type="ColorRect" parent="." unique_id=255555737]
+offset_left = -49.0
+offset_top = -50.0
+offset_right = 1122.0
+offset_bottom = 601.0
+color = Color(0.4617952, 0.5581886, 0.48575336, 1)
+
+[node name="StatusLabel" type="Label" parent="." unique_id=1863673106]
+offset_left = 43.0
+offset_top = 50.0
+offset_right = 83.0
+offset_bottom = 73.0
+
+[node name="NameLabel" type="Label" parent="." unique_id=1250797845]
+offset_left = 40.0
+offset_top = 1.0
+offset_right = 448.0
+offset_bottom = 24.0
+
+[node name="CodeInput" type="LineEdit" parent="." unique_id=302142728]
+offset_left = 211.0
+offset_top = 203.0
+offset_right = 279.5
+offset_bottom = 234.0
+
+[node name="FixButton" type="Button" parent="." unique_id=885310972]
+offset_left = 113.0
+offset_top = 116.0
+offset_right = 177.0
+offset_bottom = 181.0

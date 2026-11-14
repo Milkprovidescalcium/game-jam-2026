@@ -1,74 +1,14 @@
-# ship_net.gd (Autoload: ShipNet)
-extends Node
+extends Node2D
 
-# Signals the UI listens to
-signal message_received(text: String)
-signal room_status_changed(room_id: String, broken: bool)
-signal player_moved(room_id: String)
-signal puzzle_info(room_id: String, info: Dictionary)
-signal ship_health_changed(value: int)
-signal game_ended(won: bool)
-signal signal_lost_changed(lost: bool)
+## Player 2 (ground control). The map, timer, health bar and chat each listen
+## to ShipNet on their own; this script just handles the connection.
 
-@export var signal_delay := 3.0      # seconds, the "speed of light" delay
-var signal_lost := false              # true during orbit blackout
+const LOBBY_SCENE := "res://scenes/lobby/lobby.tscn"
 
-@onready var chat = $ChatBox
+func _ready() -> void:
+	Network.server_closed.connect(_on_server_closed)
+	if Network.is_online:
+		ShipNet.notify_ground_ready()   # tells the ship it can start the round
 
-# ---------- Ground control -> ship ----------
-
-func send_message(text: String) -> void:
-	if signal_lost:
-		return  # lost in space
-	_deliver_message.rpc_id(1, text)
-
-@rpc("any_peer", "call_local", "reliable")
-func _deliver_message(text: String) -> void:
-	await get_tree().create_timer(signal_delay).timeout
-	message_received.emit(text)
-
-# ---------- Ship -> ground control ----------
-# Call these only on the host (the ship).
-
-func set_room_broken(room_id: String, broken: bool) -> void:
-	_room_status.rpc(room_id, broken)
-
-@rpc("authority", "call_local", "reliable")
-func _room_status(room_id: String, broken: bool) -> void:
-	room_status_changed.emit(room_id, broken)
-
-func report_player_room(room_id: String) -> void:
-	_player_room.rpc(room_id)
-
-@rpc("authority", "call_local", "reliable")
-func _player_room(room_id: String) -> void:
-	player_moved.emit(room_id)
-
-func send_puzzle_info(room_id: String, info: Dictionary) -> void:
-	_puzzle_info.rpc(room_id, info)  # e.g. {"code": "4-7-1", "wires": ["red", "blue"]}
-
-@rpc("authority", "call_remote", "reliable")
-func _puzzle_info(room_id: String, info: Dictionary) -> void:
-	puzzle_info.emit(room_id, info)
-
-func set_ship_health(value: int) -> void:
-	_health.rpc(value)
-
-@rpc("authority", "call_local", "reliable")
-func _health(value: int) -> void:
-	ship_health_changed.emit(value)
-
-func set_signal_lost(lost: bool) -> void:
-	_signal_lost.rpc(lost)
-
-@rpc("authority", "call_local", "reliable")
-func _signal_lost(lost: bool) -> void:
-	signal_lost = lost
-	signal_lost_changed.emit(lost)
-
-func end_game(won: bool) -> void:
-	_end.rpc(won)
-
-@rpc("authority", "call_local", "reliable")
-func _end(won: bool) -> void:
-	game_ended.emit(won)
+func _on_server_closed() -> void:
+	get_tree().change_scene_to_file(LOBBY_SCENE)

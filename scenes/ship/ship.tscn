@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://my762trhbs4g" path="res://scenes/chat/chat.tscn" id="1_ccv4y"]
 [ext_resource type="Script" uid="uid://epwm4rrhd0vi" path="res://scenes/ship/ship.gd" id="1_u5c2e"]
+[ext_resource type="PackedScene" uid="uid://bjj87363a6sjp" path="res://scenes/ui/timer_label.tscn" id="3_wxx60"]
+[ext_resource type="Script" uid="uid://cstj6grtxg565" path="res://scenes/ship/game_manager.gd" id="4_iyjb8"]
+[ext_resource type="PackedScene" uid="uid://dw7uko8alfjfs" path="res://scenes/rooms/Cockpit/dropping_parts.tscn" id="5_0s5ox"]
+[ext_resource type="PackedScene" uid="uid://cjqjb58idpfgc" path="res://scenes/rooms/LeftWing/ventilation.tscn" id="6_gkhk1"]
+[ext_resource type="PackedScene" uid="uid://bqv2qw0tt1fy3" path="res://scenes/rooms/RightWing/radiation.tscn" id="7_37jfo"]
+[ext_resource type="PackedScene" uid="uid://inqmms5yet8v" path="res://scenes/rooms/LowerEngine/temperature.tscn" id="8_sttky"]
 
 [node name="Ship" type="Node2D" unique_id=334865542]
 script = ExtResource("1_u5c2e")
@@ -16,8 +22,33 @@ text = "Ship
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1112808384]
 
+[node name="TimerLabel" parent="UI" unique_id=52369526 instance=ExtResource("3_wxx60")]
+
 [node name="ChatBox" parent="UI" unique_id=1585531339 instance=ExtResource("1_ccv4y")]
 offset_left = 6.0
 offset_top = 398.0
 offset_right = 406.0
 offset_bottom = 648.0
+
+[node name="GameManager" type="Node" parent="." unique_id=1021040684]
+script = ExtResource("4_iyjb8")
+
+[node name="Rooms" type="Node2D" parent="." unique_id=163855682]
+
+[node name="Cockpit" type="Node2D" parent="Rooms" unique_id=305487590]
+
+[node name="DroppingParts" parent="Rooms/Cockpit" unique_id=1258382803 instance=ExtResource("5_0s5ox")]
+
+[node name="LeftWing" type="Node2D" parent="Rooms" unique_id=1582772381]
+
+[node name="Ventilation" parent="Rooms/LeftWing" unique_id=294214619 instance=ExtResource("6_gkhk1")]
+
+[node name="RightWing" type="Node2D" parent="Rooms" unique_id=354659969]
+
+[node name="Radiation" parent="Rooms/RightWing" unique_id=1892051468 instance=ExtResource("7_37jfo")]
+
+[node name="LowerEngine" type="Node2D" parent="Rooms" unique_id=1549219303]
+
+[node name="Temperature" parent="Rooms/LowerEngine" unique_id=1785828127 instance=ExtResource("8_sttky")]
+
+[node name="Body" type="Node2D" parent="Rooms" unique_id=1802342863]
