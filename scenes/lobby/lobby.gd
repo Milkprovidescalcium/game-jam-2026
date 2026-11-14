@@ -2,7 +2,7 @@
 extends Control
 
 const SHIP_SCENE := "res://scenes/ship/Body.tscn"
-const GROUND_SCENE := "res://scenes/ground_control/ground_control.tscn"
+const GROUND_SCENE := "res://scenes/ground_control/ground_control_nico.tscn"
 
 func _ready() -> void:
 	Network.player_connected.connect(_on_player_connected)   # ← this one
