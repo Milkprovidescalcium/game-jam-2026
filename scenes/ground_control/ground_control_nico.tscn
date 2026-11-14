@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bu6u7wm176c7t" path="res://art/rooms/placeholder3.jpeg" id="10_akgbx"]
 [ext_resource type="Script" uid="uid://ctl0lw23yfo4v" path="res://scenes/ground_control/papers_node.gd" id="11_e6grv"]
 [ext_resource type="Texture2D" uid="uid://bfjvjif1547ei" path="res://art/rooms/Temperature Guide.jpg" id="12_13a2u"]
+[ext_resource type="Texture2D" uid="uid://bms560ljvhbiy" path="res://art/rooms/Knob.png" id="13_u6d5m"]
+[ext_resource type="Texture2D" uid="uid://oosjtdbwh2la" path="res://art/rooms/UpTempSwitch.jpg" id="14_k1cpu"]
+[ext_resource type="Texture2D" uid="uid://b2oaqgwdfojwj" path="res://art/rooms/ButtonRed.png" id="15_07xlo"]
+[ext_resource type="Texture2D" uid="uid://bostix81uqsgt" path="res://art/rooms/landing 101new(1).png" id="16_e6grv"]
 
 [node name="GroundControl" type="Node2D" unique_id=1148467507]
 position = Vector2(-1, -2)
@@ -52,11 +56,6 @@ position = Vector2(2100, 463)
 scale = Vector2(87.15973, 1)
 texture = ExtResource("5_1epie")
 
-[node name="Instructions" type="Sprite2D" parent="InstructionsNode" unique_id=341223333]
-position = Vector2(34.999985, 3548.0002)
-scale = Vector2(1.3854661, 1.7404463)
-texture = ExtResource("6_iw7wk")
-
 [node name="BottomOfCamSprite" type="Sprite2D" parent="InstructionsNode" unique_id=641095661]
 visible = false
 position = Vector2(177, 1071)
@@ -89,14 +88,294 @@ z_index = 10
 position = Vector2(2038, 3915.0002)
 scale = Vector2(0.37752983, 0.36423892)
 
+[node name="ParentTexture" type="Sprite2D" parent="InstructionsNode" unique_id=1426403359]
+self_modulate = Color(1, 1, 1, 0.039215688)
+z_index = -1
+position = Vector2(419, 5228)
+scale = Vector2(1.038, 1)
+texture = ExtResource("16_e6grv")
+
+[node name="Instructions" type="Sprite2D" parent="InstructionsNode/ParentTexture" unique_id=341223333]
+z_index = 10
+position = Vector2(-3930.6357, 348)
+scale = Vector2(3.6698189, 4.77831)
+texture = ExtResource("6_iw7wk")
+
+[node name="Knobs" type="Node2D" parent="InstructionsNode/ParentTexture" unique_id=1765284514]
+
+[node name="Knob1" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=728215682]
+z_index = 999
+position = Vector2(62.620422, 659)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Knob2" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=1617947906]
+z_index = 999
+position = Vector2(533.71875, 663)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Knob3" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=554919033]
+z_index = 999
+position = Vector2(999.03674, 678)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Knob4" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=404720659]
+z_index = 999
+position = Vector2(91.522156, 1122)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Knob5" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=32906386]
+z_index = 999
+position = Vector2(559.7302, 1137)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Knob6" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=1035700155]
+z_index = 999
+position = Vector2(999.03674, 1145)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Knob7" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=153253826]
+z_index = 999
+position = Vector2(80.924866, 1593)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Knob8" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=921010068]
+z_index = 999
+position = Vector2(530.8286, 1604)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Knob9" type="Sprite2D" parent="InstructionsNode/ParentTexture/Knobs" unique_id=644070493]
+z_index = 999
+position = Vector2(980.7322, 1612)
+scale = Vector2(0.24723022, 0.21712492)
+texture = ExtResource("13_u6d5m")
+
+[node name="Switches" type="Node2D" parent="InstructionsNode/ParentTexture" unique_id=1042893204]
+z_index = 999
+
+[node name="Switch1" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=311811750]
+z_index = 999
+position = Vector2(-249.97586, -1027.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch2" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=2131609658]
+z_index = 999
+position = Vector2(109.36863, -1042.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch3" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=864905119]
+z_index = 999
+position = Vector2(417.65427, -1024.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch4" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=1860465868]
+z_index = 999
+position = Vector2(701.8545, -1002.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch5" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=2013515823]
+z_index = 999
+position = Vector2(1000, -1031)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch6" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=943076013]
+z_index = 999
+position = Vector2(-241.3052, -287.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch7" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=2066066412]
+z_index = 999
+position = Vector2(92.02781, -280.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch8" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=1882536245]
+z_index = 999
+position = Vector2(417.65427, -264.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch9" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=93415640]
+z_index = 999
+position = Vector2(724.9756, -241.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch10" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=979609880]
+z_index = 999
+position = Vector2(1039.041, -246.25)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch11" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=958386140]
+z_index = 999
+position = Vector2(-343.42484, 460.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch12" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=1841272229]
+z_index = 999
+position = Vector2(-21.651878, 467.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch13" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=143100589]
+z_index = 999
+position = Vector2(303.9741, 471.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch14" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=2052340638]
+z_index = 999
+position = Vector2(655.6118, 471.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch15" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=114680630]
+z_index = 999
+position = Vector2(1024.5908, 471.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch16" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=1582397171]
+z_index = 999
+position = Vector2(-334.75467, 1273.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch17" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=1821096340]
+z_index = 999
+position = Vector2(5.3222427, 1278.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch18" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=1313064119]
+z_index = 999
+position = Vector2(355.99704, 1277.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch19" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=111005240]
+z_index = 999
+position = Vector2(758.6948, 1277.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Switch20" type="Sprite2D" parent="InstructionsNode/ParentTexture/Switches" unique_id=972944530]
+z_index = 999
+position = Vector2(1086.2476, 1268.75)
+scale = Vector2(0.15791589, 0.14842865)
+texture = ExtResource("14_k1cpu")
+
+[node name="Radiaton" type="Node2D" parent="InstructionsNode/ParentTexture" unique_id=1924265878]
+z_index = 999
+
+[node name="ABD1" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=921919643]
+position = Vector2(-895.1061, -513.0001)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD2" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=715415937]
+position = Vector2(-312.25452, -500.00012)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD3" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=1911493427]
+position = Vector2(297.57263, -496.00012)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD4" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=284550364]
+position = Vector2(853.4491, -506.00012)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD5" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=13540757]
+position = Vector2(-913.4105, 465.99988)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD6" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=1501424482]
+position = Vector2(-319.96155, 481.99988)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD7" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=307273420]
+position = Vector2(271.5609, 492.99988)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD8" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=1294513873]
+position = Vector2(836.1083, 497.99988)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD9" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=483898699]
+position = Vector2(-919.1908, 1372)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD10" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=223530335]
+position = Vector2(-322.85144, 1377)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD11" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=2035446349]
+position = Vector2(230.13513, 1381)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="ABD12" type="Sprite2D" parent="InstructionsNode/ParentTexture/Radiaton" unique_id=285681875]
+position = Vector2(800.46326, 1389)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("15_07xlo")
+
+[node name="Coords" type="Node2D" parent="InstructionsNode/ParentTexture" unique_id=1826754605]
+
+[node name="NorthCoord" type="Label" parent="InstructionsNode/ParentTexture/Coords" unique_id=1361705087]
+z_index = 999
+offset_left = -814.0654
+offset_top = -108.0
+offset_right = 975.9155
+offset_bottom = 1259.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 400
+text = "100
+"
+
+[node name="EastCord" type="Label" parent="InstructionsNode/ParentTexture/Coords" unique_id=1306430378]
+z_index = 999
+offset_left = 211.94604
+offset_top = -137.0
+offset_right = 2001.927
+offset_bottom = 1230.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 400
+text = "100
+"
+
 [node name="TableNode" type="Node2D" parent="." unique_id=1693905726]
 
 [node name="ScreenNode" type="Node2D" parent="TableNode" unique_id=835402527]
 
 [node name="Placeholder3" type="Sprite2D" parent="TableNode/ScreenNode" unique_id=99456000]
-position = Vector2(1117, 1523)
-scale = Vector2(0.52012575, 0.87483007)
-texture = ExtResource("6_iw7wk")
+position = Vector2(4770, 5218)
+scale = Vector2(1.0189203, 0.99742186)
+texture = ExtResource("16_e6grv")
+metadata/_edit_lock_ = true
 
 [node name="ChecklistNode" type="Node2D" parent="TableNode" unique_id=1855244588]
 script = ExtResource("8_k1cpu")
@@ -109,7 +388,7 @@ texture = ExtResource("7_u6d5m")
 
 [node name="CheckList" type="Sprite2D" parent="TableNode/ChecklistNode" unique_id=1797006197]
 z_index = 3
-position = Vector2(-1071.9998, 4350)
+position = Vector2(-1919, 3503)
 scale = Vector2(0.37554148, 0.36286834)
 texture = ExtResource("9_07xlo")
 
@@ -158,7 +437,7 @@ offset_bottom = -169.17566
 
 [node name="OxygenSprite" type="Sprite2D" parent="TableNode/PapersNode" unique_id=711996357]
 z_index = 999
-position = Vector2(618, 4568)
+position = Vector2(2735, 4061.9998)
 scale = Vector2(0.37752983, 0.36423892)
 texture = ExtResource("12_13a2u")
 
